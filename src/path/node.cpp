@@ -15,7 +15,7 @@ double Node::distanceTo(const Node &destination) const {
     return sqrt(pow(latDiff, 2) + pow(lngDiff, 2));
 }
 
-double Node::isBetween(const Node &a, const Node &b) const {
+bool Node::isBetween(const Node &a, const Node &b) const {
     return a.distanceTo(b) == a.distanceTo(*this) + this->distanceTo(b);
 }
     
