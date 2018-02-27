@@ -4,14 +4,14 @@
 
 namespace beta {
 
-PathCache::PathCache(const std::vector<cache_entry> &entries, size_t capacityBytes)
+PathCache::PathCache(std::vector<cache_entry> &entries, size_t capacityBytes)
     : capacityBytes(capacityBytes) {
     if (capacityBytes == 0) throw std::runtime_error("path cache size must be > 0");
 
     if (entries.size() == 1) {
         cache.push_back(entries[0]);
     } else if (entries.size() > 1) {
-        cache = entries;
+        cache = std::move(entries);
         Optimizer optimizer(cache);
         currentSizeBytes = optimizer.optimize(capacityBytes);
     }

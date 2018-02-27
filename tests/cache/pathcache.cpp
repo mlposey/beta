@@ -78,6 +78,7 @@ TEST_F(PathCacheTest, constructor_removesSubpaths) {
         PathCache cache(entries, tc.first);
         ASSERT_EQ(tc.second, cache.size());
         ASSERT_EQ(tc.first, cache.capacity());
+        entries = makeEntries();
     }
 }
 

@@ -10,7 +10,7 @@ namespace beta {
 
 class PathCache {
 public:
-    PathCache(const std::vector<cache_entry> &entries, size_t capacityBytes);
+    PathCache(std::vector<cache_entry> &entries, size_t capacityBytes);
     void add(const cache_entry &entry);
     std::shared_ptr<Path> find(const path_query &query) const;
     
