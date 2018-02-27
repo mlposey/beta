@@ -3,20 +3,20 @@
 
 namespace beta {
 
-Path2D::Path2D(const point &origin, const point &destination) {
-    points.emplace_back(origin);
-    points.emplace_back(destination);
+Path2D::Path2D(const Node &origin, const Node &destination) {
+    nodes.emplace_back(origin);
+    nodes.emplace_back(destination);
     realDist = origin.distanceTo(destination);
 }
 
-void Path2D::add(const point &point) {
-    realDist += points.back().distanceTo(point);
-    points.emplace_back(point);
+void Path2D::add(const Node &node) {
+    realDist += nodes.back().distanceTo(node);
+    nodes.emplace_back(node);
 }
 
-bool Path2D::contains(const point &p) const {
-    for (int i = 0; i < points.size() - 1; i++) {
-        if (p.isBetween(points[i], points[i+1])) {
+bool Path2D::contains(const Node &node) const {
+    for (int i = 0; i < nodes.size() - 1; i++) {
+        if (node.isBetween(nodes[i], nodes[i+1])) {
             return true;
         }
     }
@@ -24,19 +24,19 @@ bool Path2D::contains(const point &p) const {
 }
 
 size_t Path2D::nodeCount() const {
-    return points.size();
+    return nodes.size();
 }
 
 double Path2D::euclideanDistance() const {
-    return points[0].distanceTo(points.back());
+    return nodes[0].distanceTo(nodes.back());
 }
 
 double Path2D::realDistance() const {
     return realDist;
 }
 
-std::string Path2D::toString() const {
-    return "[" + points[0].toString() + " -> " + points.back().toString() + "]";
+std::string Path2D::str() const {
+    return "[" + nodes[0].str() + " -> " + nodes.back().str() + "]";
 }
 
 

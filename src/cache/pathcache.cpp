@@ -25,7 +25,7 @@ void PathCache::add(const cache_entry &uniqueEntry) {
         currentSizeBytes += entrySize;
     } else {
         // TODO: Reoptimize the cache.
-        throw std::runtime_error("cache size limit reached; rejecting query " + uniqueEntry.query.toString());
+        throw std::runtime_error("cache size limit reached; rejecting query " + uniqueEntry.query.str());
     }
 }
 

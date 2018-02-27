@@ -7,11 +7,11 @@
 namespace beta {
 
 struct path_query {
-    std::string toString() const {
-        return "[" + origin.toString() + ", " + destination.toString() + "]";
+    std::string str() const {
+        return "[" + origin.str() + ", " + destination.str() + "]";
     }
-    point origin;
-    point destination;
+    Node origin;
+    Node destination;
 };
 
 #define PATH_QUERY_SIZE_BYTES 16
@@ -26,7 +26,7 @@ public:
 private:
     class PathBuilder;
 
-    std::vector<point> buildSubpath(const path_query &query) const;
+    std::vector<Node> buildSubpath(const path_query &query) const;
     std::shared_ptr<Path> path;
 };
 
@@ -36,11 +36,11 @@ public:
     void setForward() { isBuildDirectionForward = true; }
     void setReverse() { isBuildDirectionForward = false; }
 
-    void add(const point &p);
+    void add(const Node &node);
     std::shared_ptr<Path> build();
 
 private:
-    std::deque<point> points;
+    std::deque<Node> nodes;
     bool isBuildDirectionForward;
 };
 

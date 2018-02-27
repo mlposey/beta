@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES
         src/beta.cpp
+        src/path/node.cpp src/path/node.h
         src/path/path.h
         src/path/path2d.cpp src/path/path2d.h
         src/path/shareablepath.cpp src/path/shareablepath.h

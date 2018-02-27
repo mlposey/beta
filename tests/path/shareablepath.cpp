@@ -18,7 +18,7 @@ public:
 };
 
 std::shared_ptr<Path> ShareablePathTest::buildPath() {
-    std::shared_ptr<Path> path = std::make_shared<Path2D>(point{0.0f, 9.0f}, point{3.0f, 5.0f});    
+    std::shared_ptr<Path> path = std::make_shared<Path2D>(Node{0.0f, 9.0f}, Node{3.0f, 5.0f});    
     path->add({6.0f, 5.0f});
     path->add({6.0f, 2.0f});
     path->add({9.0f, 2.0f});
@@ -73,7 +73,7 @@ void ShareablePathTest::testShare(ShareablePath path, shareable_case testCase) {
     std::shared_ptr<Path> queryPath = path.share(testCase.query);
     
     if (testCase.answerableFromPath) {
-        point origin = testCase.query.origin, destination = testCase.query.destination;
+        Node origin = testCase.query.origin, destination = testCase.query.destination;
         ASSERT_TRUE(queryPath != nullptr);
         ASSERT_TRUE(queryPath->contains(origin));
         ASSERT_TRUE(queryPath->contains(destination));

@@ -49,17 +49,17 @@ std::shared_ptr<Path> ShareablePath::share(const path_query &query) const {
     return hasCompletePath ? pathBuilder.build() : nullptr;
 }
 
-void ShareablePath::PathBuilder::add(const point &p) {
-    if (isBuildDirectionForward) points.push_back(p);
-    else points.push_front(p);
+void ShareablePath::PathBuilder::add(const Node &node) {
+    if (isBuildDirectionForward) nodes.push_back(node);
+    else nodes.push_front(node);
 }
 
 std::shared_ptr<Path> ShareablePath::PathBuilder::build() {
-    if (points.size() < 2) return nullptr;
+    if (nodes.size() < 2) return nullptr;
 
-    std::shared_ptr<Path> path = std::make_shared<Path2D>(points[0], points[1]);
-    for (int i = 2; i < points.size(); i++) {
-        path->add(points[i]);
+    std::shared_ptr<Path> path = std::make_shared<Path2D>(nodes[0], nodes[1]);
+    for (int i = 2; i < nodes.size(); i++) {
+        path->add(nodes[i]);
     }
     return path;
 }

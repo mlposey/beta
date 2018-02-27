@@ -7,6 +7,7 @@
 #include "cache/pathcache.cpp"
 #include "cache/cacheentry.h"
 #include "path/path2d.h"
+#include "path/node.cpp"
 
 using namespace beta;
 
@@ -23,32 +24,32 @@ std::vector<cache_entry> PathCacheTest::makeEntries() {
     std::vector<cache_entry> entries;
 
     path_query query1{{0.0f, 9.0f}, {9.0f, 2.0f}};
-    std::shared_ptr<Path> path1 = std::make_shared<Path2D>(point{0.0f, 9.0f}, point{3.0f, 5.0f});
+    std::shared_ptr<Path> path1 = std::make_shared<Path2D>(Node{0.0f, 9.0f}, Node{3.0f, 5.0f});
     path1->add({6.0f, 5.0f});
     path1->add({6.0f, 2.0f});
     path1->add({9.0f, 2.0f});
     entries.push_back({query1, path1});
 
     path_query query2{{4.0f, 5.0f}, {8.0f, 2.0f}};
-    std::shared_ptr<Path> path2 = std::make_shared<Path2D>(point{4.0f, 5.0f}, point{6.0f, 5.0f});
+    std::shared_ptr<Path> path2 = std::make_shared<Path2D>(Node{4.0f, 5.0f}, Node{6.0f, 5.0f});
     path2->add({6.0f, 2.0f});
     path2->add({8.0f, 2.0f});
     entries.push_back({query2, path2});
 
     path_query query3{{3.0f, 0.0f}, {9.0f, 8.0f}};
-    std::shared_ptr<Path> path3 = std::make_shared<Path2D>(point{3.0f, 0.0f}, point{3.0f, 5.0f});
+    std::shared_ptr<Path> path3 = std::make_shared<Path2D>(Node{3.0f, 0.0f}, Node{3.0f, 5.0f});
     path3->add({4.0f, 8.0f});
     path3->add({9.0f, 8.0f});
     entries.push_back({query3, path3});
 
     path_query query4{{3.0f, 2.0f}, {7.0f, 8.0f}};
-    std::shared_ptr<Path> path4 = std::make_shared<Path2D>(point{3.0f, 2.0f}, point{3.0f, 5.0f});
+    std::shared_ptr<Path> path4 = std::make_shared<Path2D>(Node{3.0f, 2.0f}, Node{3.0f, 5.0f});
     path4->add({4.0f, 8.0f});
     path4->add({7.0f, 8.0f});
     entries.push_back({query4, path4});
 
     path_query query5{{3.0f, 3.0f}, {6.0f, 8.0f}};
-    std::shared_ptr<Path> path5 = std::make_shared<Path2D>(point{3.0f, 3.0f}, point{3.0f, 5.0f});
+    std::shared_ptr<Path> path5 = std::make_shared<Path2D>(Node{3.0f, 3.0f}, Node{3.0f, 5.0f});
     path5->add({4.0f, 8.0f});
     path5->add({6.0f, 8.0f});
     entries.push_back({query5, path5});
@@ -90,7 +91,7 @@ TEST_F(PathCacheTest, keepsOptimalEntries) {
 
     auto path = cache.find(kept.query);
     ASSERT_TRUE(path != nullptr);
-    ASSERT_EQ(path->toString(), kept.path->toString());
+    ASSERT_EQ(path->str(), kept.path->str());
 }
 
 TEST_F(PathCacheTest, add_preventsOverflow) {

@@ -20,11 +20,11 @@ TEST_F(Path2DTest, euclideanDistance) {
 }
 
 TEST_F(Path2DTest, realDistance) {
-    point a{0.0f, 9.0f}, b{3.0f, 5.0f};    
+    Node a{0.0f, 9.0f}, b{3.0f, 5.0f};    
     Path2D path(a, b);
     ASSERT_EQ(path.euclideanDistance(), path.realDistance());
     
-    point c{0.0f, 0.0f};
+    Node c{0.0f, 0.0f};
     path.add(c);
 
     double expectedDistance = a.distanceTo(b) + b.distanceTo(c);
@@ -32,7 +32,7 @@ TEST_F(Path2DTest, realDistance) {
 }
 
 TEST_F(Path2DTest, contains) {
-    point a{0.0f, 9.0f}, b{3.0f, 5.0f};
+    Node a{0.0f, 9.0f}, b{3.0f, 5.0f};
     Path2D path(a, b);
     path.add({2.9f, 9.9f});
 
@@ -40,12 +40,14 @@ TEST_F(Path2DTest, contains) {
     ASSERT_TRUE(path.contains(b));
     ASSERT_FALSE(path.contains({0.0f, 0.0f}));
 
-    point midpoint{(a.lat + b.lat) / 2, (a.lng + b.lng) / 2};
+    float lat = (a.latitude() + b.latitude()) / 2;
+    float lng = (a.longitude() + b.longitude()) / 2;
+    Node midpoint{lat, lng};
     ASSERT_TRUE(path.contains(midpoint)); 
 }
 
 TEST_F(Path2DTest, constIterators) {
-    point a{0.0f, 9.0f}, b{3.0f, 5.0f};
+    Node a{0.0f, 9.0f}, b{3.0f, 5.0f};
     Path2D path(a, b);
 
     auto it = path.begin();
