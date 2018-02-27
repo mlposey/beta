@@ -1,8 +1,6 @@
 #include <stdexcept>
 #include "pathcache.h"
-// TODO: Fix include issue regarding optimizer.h.
-// Try changing this to #include "optimizer.h". It won't work.
-#include "optimizer.cpp"
+#include "optimizer.h"
 
 namespace beta {
 

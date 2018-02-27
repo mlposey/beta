@@ -3,6 +3,7 @@
 #include <utility>
 #include <cstdlib>
 #include "gtest/gtest.h"
+#include "cache/optimizer.cpp"
 #include "cache/pathcache.cpp"
 #include "cache/cacheentry.h"
 #include "path/path2d.h"
