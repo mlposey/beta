@@ -11,7 +11,7 @@ size_t Optimizer::optimize(size_t capacityBytes) {
 
     std::vector<ranked_entry> uniqueEntries = rankCacheEntries();
     sortBySAPNDesc(uniqueEntries);
-    keepMaxAllowed(uniqueEntries);
+    prune(uniqueEntries);
     return currentSizeBytes;
 }
 
@@ -49,7 +49,7 @@ void Optimizer::sortBySAPNDesc(std::vector<ranked_entry> &rankedEntries) {
     });
 }
 
-void Optimizer::keepMaxAllowed(std::vector<ranked_entry> &rankedEntries) {
+void Optimizer::prune(std::vector<ranked_entry> &rankedEntries) {
     currentSizeBytes = 0;
     std::vector<cache_entry> newCache;
 
@@ -62,7 +62,7 @@ void Optimizer::keepMaxAllowed(std::vector<ranked_entry> &rankedEntries) {
             break;
         }
     }
-    cache = newCache;
+    cache = std::move(newCache);
 }
 
 }  // namespace beta

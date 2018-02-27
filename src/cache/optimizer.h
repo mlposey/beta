@@ -13,7 +13,7 @@ private:
     struct ranked_entry;
 
     std::vector<ranked_entry> rankCacheEntries();
-    void keepMaxAllowed(std::vector<ranked_entry> &rankedEntries);
+    void prune(std::vector<ranked_entry> &rankedEntries);
 
     void sortCacheByRealDistDesc();
     void sortBySAPNDesc(std::vector<ranked_entry> &rankedEntries);
