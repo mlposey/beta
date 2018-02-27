@@ -12,11 +12,11 @@ public:
 private:
     struct ranked_entry;
 
+    std::vector<ranked_entry> rankCacheEntries();
+    void keepMaxAllowed(std::vector<ranked_entry> &rankedEntries);
+
     void sortCacheByRealDistDesc();
     void sortBySAPNDesc(std::vector<ranked_entry> &rankedEntries);
-
-    void collectUniqueFromCache(std::vector<ranked_entry> &unique);
-    void keepMaxAllowed(std::vector<ranked_entry> &rankedEntries);
 
     size_t capacityBytes;
     size_t currentSizeBytes;
