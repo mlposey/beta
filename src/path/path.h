@@ -1,11 +1,10 @@
 #pragma once
 #include <cstddef>
-#include <cmath>
-#include <functional>
 #include "node.h"
 
 namespace beta {
 
+/** Describes an ordered collection of connected Nodes */
 struct Path {
     virtual ~Path() = default;
 
