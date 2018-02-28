@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.2)
 project(src)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
+find_package(Boost REQUIRED COMPONENTS system filesystem)
 INCLUDE_DIRECTORIES(src external)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -14,9 +15,15 @@ set(SOURCE_FILES
         src/path/shareablepath.cpp src/path/shareablepath.h
         src/cache/cacheentry.h
         src/cache/optimizer.cpp src/cache/optimizer.h
-        src/cache/pathcache.cpp src/cache/pathcache.h)
+        src/cache/pathcache.cpp src/cache/pathcache.h
+        src/provider/pathprovider.h
+        src/provider/providerloader.cpp src/provider/providerloader.h)
 
 add_executable(beta ${SOURCE_FILES})
+target_link_libraries(beta ${CMAKE_DL_LIBS} Boost::system Boost::filesystem)
+
+file(COPY tests/provider/mock
+     DESTINATION build/)
 
 configure_file(external/CMakeLists.txt.in external/gtest/googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
@@ -53,7 +60,8 @@ set(TEST_FILES
         tests/main.cpp
         tests/path/path2d.cpp
         tests/path/shareablepath.cpp
-        tests/cache/pathcache.cpp)
+        tests/cache/pathcache.cpp
+        tests/provider/providerloader.cpp)
 
 add_executable(tests ${TEST_FILES})
-target_link_libraries(tests gtest)
+target_link_libraries(tests gtest ${CMAKE_DL_LIBS} Boost::system Boost::filesystem)
