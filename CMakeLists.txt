@@ -20,7 +20,7 @@ set(SOURCE_FILES
         src/provider/providerloader.cpp src/provider/providerloader.h)
 
 add_executable(beta ${SOURCE_FILES})
-target_link_libraries(beta ${CMAKE_DL_LIBS} Boost::system Boost::filesystem)
+target_link_libraries(beta ${CMAKE_DL_LIBS} ${Boost_LIBRARIES})
 
 file(COPY tests/provider/mock
      DESTINATION build/)
@@ -64,4 +64,4 @@ set(TEST_FILES
         tests/provider/providerloader.cpp)
 
 add_executable(tests ${TEST_FILES})
-target_link_libraries(tests gtest ${CMAKE_DL_LIBS} Boost::system Boost::filesystem)
+target_link_libraries(tests gtest ${CMAKE_DL_LIBS} ${Boost_LIBRARIES})
