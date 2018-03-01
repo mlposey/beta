@@ -20,33 +20,34 @@ bool ShareablePath::canShare(const path_query &query) const {
 
 std::shared_ptr<Path> ShareablePath::share(const path_query &query) const {
     PathBuilder pathBuilder;
-    bool foundStart = false;
-    bool hasCompletePath = false;
+    bool foundOrigin = false, foundDestination = false;
     
-    for (auto it = path->begin(); it != path->end() && !hasCompletePath; it++) {
-        if (!foundStart) {
+    for (auto it = path->begin(); it != path->end() - 1; it++) {
+        if (!foundOrigin && !foundDestination) {
             if (query.origin.isBetween(*it, *(it+1))) {
                 pathBuilder.setForward();
                 pathBuilder.add(query.origin);
-                foundStart = true;
+                foundOrigin = true;
             } else if (query.destination.isBetween(*it, *(it+1))) {
                 pathBuilder.setReverse();
                 pathBuilder.add(query.destination);
-                foundStart = true;
+                foundDestination = true;
             }
         } else {
-            if (query.origin.isBetween(*it, *(it+1))) {
+            if (!foundOrigin && query.origin.isBetween(*it, *(it+1))) {
                 pathBuilder.add(query.origin);
-                hasCompletePath = true;
-            } else if (query.destination.isBetween(*it, *(it+1))) {
+                foundOrigin = true;
+                break;
+            } else if (!foundDestination && query.destination.isBetween(*it, *(it+1))) {
                 pathBuilder.add(query.destination);
-                hasCompletePath = true;
+                foundDestination = true;
+                break;
             } else {
                 pathBuilder.add(*it);
             }
         }        
     }
-    return hasCompletePath ? pathBuilder.build() : nullptr;
+    return (foundOrigin && foundDestination) ? pathBuilder.build() : nullptr;
 }
 
 void ShareablePath::PathBuilder::add(const Node &node) {

@@ -32,8 +32,7 @@ public:
 
 private:
     class PathBuilder;
-
-    std::vector<Node> buildSubpath(const path_query &query) const;
+    
     std::shared_ptr<Path> path;
 };
 

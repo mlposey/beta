@@ -79,6 +79,7 @@ void ShareablePathTest::testShare(ShareablePath path, shareable_case testCase) {
         ASSERT_TRUE(queryPath->contains(destination));
         ASSERT_EQ(origin.distanceTo(destination), queryPath->euclideanDistance());
     } else {
-        ASSERT_TRUE(queryPath == nullptr);
+        ASSERT_TRUE(queryPath == nullptr) << "failed check for case " << testCase.query.str()
+                                          << "; expected no path, found " << queryPath->str();
     }
 }
