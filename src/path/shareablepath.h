@@ -36,34 +36,30 @@ private:
     std::shared_ptr<Path> path;
 };
 
-/**
- * Builds subpaths for ShareablePath
- * 
- * PathBuilder allows paths to be built in forward order (by appending nodes) as well as
- * in reverse (by prepending).
- */
+/** Uses the nodes in existing paths to build subpaths which answer queries */
 class ShareablePath::PathBuilder {
 public:
-    /** Creates a builder that constructs a path in a forward direction */
-    PathBuilder() : isBuildDirectionForward(true) {}
-
-    /** Instructs the builder to add new nodes to the end of the path */
-    void setForward() { isBuildDirectionForward = true; }
-    /** Instructs the builder to add new nodes to the beginning of the path */
-    void setReverse() { isBuildDirectionForward = false; }
+    /** Creates a builder that searches path for an answer to query */
+    PathBuilder(const std::shared_ptr<Path> &path, const path_query &query);
 
     /**
-     * Adds a node to the path
-     * The ordering of node additions is dictated by the methods setForward and setReverse.
+     * Builds a path that satisfies the target query
+     * @returns the subpath that satisfies the query or nullptr if the query is not satisfiable
      */
-    void add(const Node &node);
-    
-    /** Builds the final Path representation of the node collection */
     std::shared_ptr<Path> build();
 
 private:
-    std::deque<Node> nodes;
-    bool isBuildDirectionForward;
+    Path::const_iterator findSubpathStart();
+    void buildSubpath(Path::const_iterator subpathOrigin);
+    void add(const Node &node);
+
+    const path_query &query;
+    const std::shared_ptr<Path> &masterPath;
+    std::deque<Node> subpathNodes;
+
+    bool isBuildDirectionForward;  // Are we appending or prepending nodes to the subpath?
+    bool foundOrigin;
+    bool foundDestination;
 };
 
 }  // namespace beta
