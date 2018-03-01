@@ -8,7 +8,11 @@ Config::Config() {
 }
 
 std::string Config::get(std::string key) {
-    return params[key];
+    auto it = params.find(key);
+    if (it == params.end()) {
+        return "";
+    }
+    return *it;
 }
 
 void Config::loadParams() {
