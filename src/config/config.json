@@ -1,0 +1,4 @@
+{
+    "provider_dir": "./providers",
+    "max_cache_mem": "100MB"
+}

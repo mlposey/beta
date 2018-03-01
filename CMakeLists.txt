@@ -9,6 +9,8 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES
         src/beta.cpp
+        external/nlohmann/json.hpp
+        src/config/config.cpp src/config/config.h
         src/path/node.cpp src/path/node.h
         src/path/path.h
         src/path/path2d.cpp src/path/path2d.h
@@ -22,7 +24,7 @@ set(SOURCE_FILES
 add_executable(beta ${SOURCE_FILES})
 target_link_libraries(beta ${CMAKE_DL_LIBS} ${Boost_LIBRARIES})
 
-file(COPY tests/provider/mock
+file(COPY tests/provider/mock src/config/config.json
      DESTINATION build/)
 
 configure_file(external/CMakeLists.txt.in external/gtest/googletest-download/CMakeLists.txt)
@@ -58,6 +60,7 @@ endif()
 
 set(TEST_FILES
         tests/main.cpp
+        tests/config/config.cpp
         tests/path/path2d.cpp
         tests/path/shareablepath.cpp
         tests/cache/pathcache.cpp
