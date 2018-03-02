@@ -10,7 +10,7 @@ PathCache::PathCache(std::vector<cache_entry> &entries, size_t capacityBytes)
     if (capacityBytes == 0) throw std::runtime_error("path cache size must be > 0");
 
     if (entries.size() == 1) {
-        cache.push_back(entries[0]);
+        add(entries[0]);
     } else if (entries.size() > 1) {
         cache = std::move(entries);
         Optimizer optimizer(cache);
