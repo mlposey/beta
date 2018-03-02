@@ -5,7 +5,8 @@
 namespace beta {
 
 PathCache::PathCache(std::vector<cache_entry> &entries, size_t capacityBytes)
-    : capacityBytes(capacityBytes) {
+    : capacityBytes(capacityBytes)
+    , currentSizeBytes(0) {
     if (capacityBytes == 0) throw std::runtime_error("path cache size must be > 0");
 
     if (entries.size() == 1) {
