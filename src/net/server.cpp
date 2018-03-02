@@ -1,4 +1,6 @@
 #include "server.h"
+#include "path/path2d.h"
+#include "messageconverter.hpp"
 
 namespace beta {
 
@@ -20,7 +22,18 @@ void Server::listen(std::string port) {
 }
 
 Status Server::GetRoute(ServerContext *ctx, const RouteQuery *query, Route *route) {
-    // TODO: GetRoute
+    printf("getting route for client...\n");    
+    Node origin = MessageConverter::convert(query->origin());
+    Node destination = MessageConverter::convert(query->destination());
+    
+    auto path = cache->find(path_query{origin, destination});
+    if (path) {
+        printf("found route %s\nbuilding response...\n", path->str().c_str());
+        MessageConverter::convert(path, route);
+    } else {
+        printf("could not find path\n");
+    }
+    printf("done.\n");    
     return Status::OK;
 }
 
@@ -30,7 +43,17 @@ Status Server::MustGetRoute(ServerContext *ctx, const RouteQuery *query, Route *
 }
 
 Status Server::AddRoute(ServerContext *ctx, const Route *route, AddResponse *res) {
-    // TODO: AddRoute
+    printf("adding route for client...\n");
+    std::shared_ptr<Path> path = MessageConverter::convert(route);
+    if (!path) {
+        return Status::CANCELLED;
+    }
+    printf("built path %s for client\n", path->str().c_str());
+    
+    path_query query{*(path->begin()), *(path->end() - 1)};
+    cache->add(cache_entry{query, path});
+
+    printf("done.\n");
     return Status::OK;
 }
 
