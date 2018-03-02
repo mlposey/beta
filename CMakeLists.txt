@@ -19,10 +19,17 @@ set(SOURCE_FILES
         src/cache/optimizer.cpp src/cache/optimizer.h
         src/cache/pathcache.cpp src/cache/pathcache.h
         src/provider/pathprovider.h
-        src/provider/providerloader.cpp src/provider/providerloader.h)
+        src/provider/providerloader.cpp src/provider/providerloader.h
+        src/net/protobuf/beta.grpc.pb.cc src/net/protobuf/beta.grpc.pb.h
+        src/net/protobuf/beta.pb.cc src/net/protobuf/beta.pb.h
+        src/net/server.cpp src/net/server.h)
 
 add_executable(beta ${SOURCE_FILES})
-target_link_libraries(beta ${CMAKE_DL_LIBS} ${Boost_LIBRARIES})
+target_link_libraries(beta
+        ${CMAKE_DL_LIBS}
+        ${Boost_LIBRARIES}
+        grpc++
+        protobuf)
 
 file(COPY tests/provider/mock src/config/config.json
      DESTINATION build/)
