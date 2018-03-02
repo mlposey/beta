@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.2)
 project(src)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
+set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost REQUIRED COMPONENTS system filesystem)
 INCLUDE_DIRECTORIES(src external)
 
@@ -29,8 +30,11 @@ add_executable(beta ${SOURCE_FILES})
 target_link_libraries(beta
         ${CMAKE_DL_LIBS}
         ${Boost_LIBRARIES}
-        grpc++
-        protobuf)
+        -lpthread -lm
+        libgrpc++.a libgrpc.a libprotobuf.a
+        -lz
+        libssl.a libcrypto.a
+        -static-libstdc++)
 
 file(COPY tests/provider/mock src/config/config.json
      DESTINATION build/)

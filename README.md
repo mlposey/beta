@@ -36,7 +36,7 @@ $ sudo apt install build-essential g++ python-dev autotools-dev libicu-dev build
 $ wget https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.gz
 $ tar -xzf boost_1_66_0.tar.gz && cd boost_1_66_0
 $ ./bootstrap.sh --prefix=/usr/local
-$ sudo ./b2 -jN install
+$ sudo ./b2 -jN link=static install
 $ cd ..
 ```
 The value of `N` in the b2 invocation should be the number of threads to use.
@@ -47,7 +47,7 @@ $ git clone -b $(curl -L https://grpc.io/release) https://github.com/grpc/grpc
 $ cd grpc
 $ git submodule update --init
 $ cd third_party/protobuf && ./autogen.sh && ./configure && make && make install && cd ../..
-$ make -jN
+$ make -jN static
 $ sudo make install
 $ cd ..
 ```
