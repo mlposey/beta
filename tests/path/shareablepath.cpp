@@ -83,3 +83,20 @@ void ShareablePathTest::testShare(ShareablePath path, shareable_case testCase) {
                                           << "; expected no path, found " << queryPath->str();
     }
 }
+
+TEST_F(ShareablePathTest, share_pathMatch) {
+    auto path = buildPath();
+    ShareablePath shared(path);
+
+    path_query req{{3.0f, 5.0f}, {6.0f, 2.0f}};
+    std::shared_ptr<Path> res = shared.share(req);
+
+    ASSERT_FALSE(res == nullptr);
+    ASSERT_EQ(3, res->nodeCount());
+
+    Node v1{3.0f, 5.0f}, v2{6.0f, 5.0f}, v3{6.0f, 2.0f};
+    auto it = res->begin();
+    ASSERT_EQ(v1, *it++);
+    ASSERT_EQ(v2, *it++);
+    ASSERT_EQ(v3, *it++);
+}
