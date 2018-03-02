@@ -22,17 +22,16 @@ void Server::listen(std::string port) {
 }
 
 Status Server::GetRoute(ServerContext *ctx, const RouteQuery *query, Route *route) {
-    printf("getting route for client...\n");    
-    Node origin = MessageConverter::convert(query->origin());
-    Node destination = MessageConverter::convert(query->destination());
-    
-    auto path = cache->find(path_query{origin, destination});
+    printf("getting route for client...\n");
+
+    auto path = cache->find(MessageConverter::convert(query));
     if (path) {
         printf("found route %s\nbuilding response...\n", path->str().c_str());
         MessageConverter::convert(path, route);
     } else {
         printf("could not find path\n");
     }
+
     printf("done.\n");    
     return Status::OK;
 }

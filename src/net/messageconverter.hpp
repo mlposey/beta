@@ -1,6 +1,7 @@
 #pragma once
 #include "path/node.h"
 #include "path/path2d.h"
+#include "path/shareablepath.h"
 #include "protobuf/beta.grpc.pb.h"
 
 namespace beta {
@@ -12,6 +13,7 @@ public:
     /** @returns nullptr if the route does not contain at least two nodes */
     static std::shared_ptr<Path> convert(const betagrpc::Route *route);
     static void convert(std::shared_ptr<Path> src, betagrpc::Route *dst);
+    static path_query convert(const betagrpc::RouteQuery *query);
 };
 
 Node MessageConverter::convert(const betagrpc::Node &node) {
@@ -40,6 +42,13 @@ void MessageConverter::convert(std::shared_ptr<Path> src, betagrpc::Route *dst) 
         node->set_latitude(it->latitude());
         node->set_longitude(it->longitude());
     }
+}
+
+path_query MessageConverter::convert(const betagrpc::RouteQuery *query) {
+    return {
+        MessageConverter::convert(query->origin()),
+        MessageConverter::convert(query->destination())
+    };
 }
 
 }  // namespace beta
