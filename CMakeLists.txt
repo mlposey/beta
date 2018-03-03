@@ -39,6 +39,7 @@ target_link_libraries(beta
 set(BETA_RELEASE_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/release)
 add_custom_command(TARGET beta POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory ${BETA_RELEASE_DIRECTORY}
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${BETA_RELEASE_DIRECTORY}/providers
         COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:beta> ${BETA_RELEASE_DIRECTORY}/.
         COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/config.json ${BETA_RELEASE_DIRECTORY}/.)
 
