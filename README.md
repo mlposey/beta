@@ -60,7 +60,7 @@ $ sudo make install
 $ cd ..
 ```
 `N` should assume the value it was previously given.
-### Build the app.
+#### Build the app.
 ```
 $ cmake .
 $ make -jN
