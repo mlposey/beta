@@ -7,13 +7,14 @@ using namespace beta;
 
 int main() {
     printf("BeTA v%s\n", APP_VERSION);
+    Config &config = Config::getInstance();
 
     // TODO: Load entries from disk if needed.
     std::vector<cache_entry> entries;
-    PathCache cache(entries, 1000);
+    PathCache cache(entries, config.getBytes("max_cache_mem"));
 
     // TODO: Load provider if needed.
     Server server(&cache, nullptr);
-    server.listen(Config::getInstance().getString("port"));
+    server.listen(config.getString("port"));
     return 0;
 }
