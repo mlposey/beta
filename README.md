@@ -18,7 +18,7 @@ The Dockerfile will produce a minimal application image to deploy. Simply
 run `docker build -t beta .` within the root repository directory. The image
 exposes the default port `1995`.
 
-## Release Binaries
+## Downloading Binaries
 Each release contains an archive with binaries of the associated version. You
 can find all releases [here](https://github.com/mlposey/beta/releases).
 
