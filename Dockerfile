@@ -41,4 +41,6 @@ FROM debian:9-slim
 WORKDIR /app
 COPY --from=builder /app/beta/build/release/ .
 
+EXPOSE 1995
+
 ENTRYPOINT ./beta
