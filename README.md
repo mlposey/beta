@@ -52,9 +52,9 @@ $ sudo make install
 $ cd ..
 ```
 `N` should assume the value it was previously given.
-## Build the app (finally)
+## Build the app.
 ```
 $ cmake .
 $ make -jN
 ```
-Binaries can be found in the `build` directory.
+The release artifacts are located in `build/release`.
