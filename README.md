@@ -11,11 +11,16 @@ the gRPC and Provider APIs. The name may even change; *SearchyFindyThing*
 sounds better every day.
 
 # Running the App
-There are two options for running the app: using Docker and building from source.
+There are three options for running the app: using Docker, downloading binaries, and building from source.
+
 ## Using Docker
 The Dockerfile will produce a minimal application image to deploy. Simply
 run `docker build -t beta .` within the root repository directory. The image
 exposes the default port `1995`.
+
+## Release Binaries
+Each release contains an archive with binaries of the associated version. You
+can find all releases [here](https://github.com/mlposey/beta/releases).
 
 ## Building from Source
 [BUILD](BUILD.md) contains detailed instructions for building binaries in a
