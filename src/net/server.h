@@ -18,10 +18,12 @@ using betagrpc::AddResponse;
 
 namespace beta {
 
+/** Handles gRPC requests */
 class Server final : public Beta::Service {
 public:
     Server(PathCache *cache, std::shared_ptr<PathProvider> provider);
 
+    /** Starts a blocking instance of the server at the given port */
     void listen(std::string port);
 
     Status GetRoute(ServerContext *ctx, const RouteQuery *query, Route *route) override;
