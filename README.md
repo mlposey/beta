@@ -29,7 +29,7 @@ $ git clone https://github.com/mlposey/beta.git && cd beta
 ```
 ### Install the base build tools.
 ```
-$ sudo apt install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev cmake wget curl autoconf libtool autogen unzip
+$ sudo apt install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev cmake wget curl autoconf libtool autogen unzip zlib1g-dev libssl-dev
 ```
 ### Install Boost.
 ```
@@ -47,6 +47,7 @@ $ git clone -b $(curl -L https://grpc.io/release) https://github.com/grpc/grpc
 $ cd grpc
 $ git submodule update --init
 $ cd third_party/protobuf && ./autogen.sh && ./configure && make && make install && cd ../..
+$ ldconfig
 $ make -jN static
 $ sudo make install
 $ cd ..
