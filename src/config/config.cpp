@@ -7,7 +7,7 @@ Config::Config() {
     loadParams();
 }
 
-std::string Config::get(std::string key) {
+std::string Config::getString(std::string key) {
     auto it = params.find(key);
     if (it == params.end()) {
         return "";

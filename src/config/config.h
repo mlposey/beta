@@ -18,7 +18,7 @@ public:
     }
 
     /** Gets the configuration value of a given key or "" if the key is unrecognized */
-    std::string get(std::string key);
+    std::string getString(std::string key);
 
 protected:
     Config();

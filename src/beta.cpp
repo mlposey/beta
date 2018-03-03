@@ -14,6 +14,6 @@ int main() {
 
     // TODO: Load provider if needed.
     Server server(&cache, nullptr);
-    server.listen(Config::getInstance().get("port"));
+    server.listen(Config::getInstance().getString("port"));
     return 0;
 }
