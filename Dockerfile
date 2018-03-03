@@ -32,7 +32,7 @@ RUN git clone -b $(curl -L https://grpc.io/release) https://github.com/grpc/grpc
 WORKDIR beta
 COPY . .
 
-RUN cmake . && make -j $(grep -c ^processor /proc/cpuinfo)
+RUN cmake . && make -j $(grep -c ^processor /proc/cpuinfo) beta
 
 # -----------------------------------------------------------------------------
 
