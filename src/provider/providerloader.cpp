@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <stdexcept>
+#include <iostream>
 #include "providerloader.h"
 
 namespace beta {
@@ -14,9 +15,9 @@ std::shared_ptr<ProviderAdapter> ProviderLoader::load(std::string filename) {
         boost::shared_ptr<PathProvider> tmp = importProvider(filename);
         provider = getStdHandle(tmp);
         verify(provider);
-        // TODO: Print provider information using another method.
+        printDetails(provider);
     } catch (std::exception &ex) {
-        printf("failed to load provider %s\n", filename.c_str());
+        printf("failed to load provider file %s\n", filename.c_str());
         printf("reason: %s\n", ex.what());
         throw ex;
     }
@@ -42,6 +43,13 @@ void ProviderLoader::verify(std::shared_ptr<PathProvider> provider) {
     if (provider->author().empty()) {
         throw std::runtime_error("missing provider author");
     }
+}
+
+void ProviderLoader::printDetails(std::shared_ptr<PathProvider> provider) {
+    std::cout << "loaded provider:\n"
+              << " - name: " << provider->name() << '\n'
+              << " - version: " << provider->version() << '\n'
+              << " - author: " << provider->author() << '\n';
 }
 
 }  // namespace beta

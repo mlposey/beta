@@ -24,6 +24,7 @@ private:
     boost::shared_ptr<PathProvider> importProvider(std::string filename);
     std::shared_ptr<PathProvider> getStdHandle(boost::shared_ptr<PathProvider> provider);
     void verify(std::shared_ptr<PathProvider> provider);
+    void printDetails(std::shared_ptr<PathProvider> provider);
 
     boost::filesystem::path providersDir;
 };
