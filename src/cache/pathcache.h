@@ -31,7 +31,7 @@ public:
      */
     PathCache(std::vector<std::shared_ptr<Path>> *paths, size_t capacityBytes);
 
-    /** Adds an entry to the cache */
+    /** Adds a path to the cache */
     void add(std::shared_ptr<Path> path);
     /** Retrieves a path that answers the given query or nullptr if no such path exists */
     std::shared_ptr<Path> find(const path_query &query) const;
