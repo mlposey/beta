@@ -1,4 +1,5 @@
 build
+/*.tar.gz
 
 .idea
 .vscode
