@@ -23,6 +23,7 @@ set(SOURCE_FILES
         src/cache/pathcache.cpp src/cache/pathcache.h
         src/provider/pathprovider.h
         src/provider/providerloader.cpp src/provider/providerloader.h
+        src/provider/provideradapter.cpp src/provider/provideradapter.h
         src/net/protobuf/beta.grpc.pb.cc src/net/protobuf/beta.grpc.pb.h
         src/net/protobuf/beta.pb.cc src/net/protobuf/beta.pb.h
         src/net/messageconverter.cpp src/net/messageconverter.h
