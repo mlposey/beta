@@ -10,4 +10,4 @@ struct FlagParser {
     virtual std::string provider() const = 0;
 };
 
-}
+}  // namespace beta
