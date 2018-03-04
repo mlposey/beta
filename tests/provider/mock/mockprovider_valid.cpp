@@ -8,7 +8,7 @@ public:
     std::string author() const { return "Mock"; }
 
     std::vector<float> findPath(float srcLat, float srcLng, float dstLat, float dstLng) {
-        return {3.0, 4.0};
+        return {3.0, 4.0, 6.0, 9.0};
     }
 };
 

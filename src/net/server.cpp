@@ -4,7 +4,7 @@
 
 namespace beta {
 
-Server::Server(PathCache *cache, std::shared_ptr<PathProvider> provider)
+Server::Server(PathCache *cache, std::shared_ptr<ProviderAdapter> provider)
     : cache(cache)
     , provider(provider)
 {}
@@ -32,13 +32,25 @@ Status Server::GetRoute(ServerContext *ctx, const RouteQuery *query, Route *rout
         printf("could not find path\n");
     }
 
-    printf("done.\n");    
+    printf("done.\n");
     return Status::OK;
 }
 
 Status Server::MustGetRoute(ServerContext *ctx, const RouteQuery *query, Route *route) {
-    if (!provider) return GetRoute(ctx, query, route);
-    // TODO: MustGetRoute
+    GetRoute(ctx, query, route);
+    if (route->nodes_size() == 0 && provider) {
+        printf("using provider to answer query...\n");
+
+        std::shared_ptr<Path> path = provider->findPath(MessageConverter::convert(query));
+        if (path) {
+            printf("got provider path %s\n", path->str().c_str());
+            cache->add(path);
+            MessageConverter::convert(path, route);
+        } else {
+            printf("provider could not find path\n");
+        }
+        printf("done.\n");
+    }
     return Status::OK;
 }
 
