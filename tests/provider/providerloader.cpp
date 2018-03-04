@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "provider/providerloader.cpp"
+#include "provider/provideradapter.cpp"
 
 using namespace beta;
 
@@ -20,7 +21,7 @@ void ProviderLoaderTest::buildMockLib(std::string filename) {
 TEST_F(ProviderLoaderTest, load_validLib) {
     buildMockLib("mockprovider_valid.cpp");
     ProviderLoader loader(".");
-    std::shared_ptr<PathProvider> provider = loader.load("mockprovider.so");
+    std::shared_ptr<PathProvider> provider = loader.load("mockprovider.so")->provider();
 
     ASSERT_EQ("MockProvider", provider->name());
     ASSERT_EQ("Mock", provider->author());

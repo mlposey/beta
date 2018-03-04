@@ -2,6 +2,7 @@
 #include <memory>
 #include <boost/dll/import.hpp>
 #include "pathprovider.h"
+#include "provideradapter.h"
 
 namespace beta {
 
@@ -17,7 +18,7 @@ public:
      * @param filename the name of the shared library file, most likely having a .so extension
      * @throws std::runtime_error if the provider could not be loaded
      */
-    std::shared_ptr<PathProvider> load(std::string filename);
+    std::shared_ptr<ProviderAdapter> load(std::string filename);
 
 private:
     boost::shared_ptr<PathProvider> importProvider(std::string filename);

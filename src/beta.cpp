@@ -8,7 +8,7 @@
 using namespace beta;
 
 /** Loads a provider or defaults to nullptr if it cannot be found or was not requested */
-std::shared_ptr<PathProvider> loadProvider(FlagParser *flagParser);
+std::shared_ptr<ProviderAdapter> loadProvider(FlagParser *flagParser);
 
 int main(int argc, char **argv) {
     printf("BeTA v%s\n", APP_VERSION);
@@ -28,8 +28,8 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-std::shared_ptr<PathProvider> loadProvider(FlagParser *flagParser) {
-    std::shared_ptr<PathProvider> provider = nullptr;
+std::shared_ptr<ProviderAdapter> loadProvider(FlagParser *flagParser) {
+    std::shared_ptr<ProviderAdapter> provider = nullptr;
     try {
         ProviderLoader loader(Config::getInstance().getString("provider_dir"));
         std::string providerName = flagParser->provider();

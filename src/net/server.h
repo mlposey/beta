@@ -6,7 +6,7 @@
 #include <grpc++/security/server_credentials.h>
 #include "protobuf/beta.grpc.pb.h"
 #include "cache/pathcache.h"
-#include "provider/pathprovider.h"
+#include "provider/provideradapter.h"
 
 using grpc::ServerBuilder;
 using grpc::ServerContext;
@@ -21,7 +21,7 @@ namespace beta {
 /** Handles gRPC requests */
 class Server final : public Beta::Service {
 public:
-    Server(PathCache *cache, std::shared_ptr<PathProvider> provider);
+    Server(PathCache *cache, std::shared_ptr<ProviderAdapter> provider);
 
     /** Starts a blocking instance of the server at the given port */
     void listen(std::string port);
@@ -32,7 +32,7 @@ public:
 
 private:
     PathCache *cache;
-    std::shared_ptr<PathProvider> provider;
+    std::shared_ptr<ProviderAdapter> provider;
 };
 
 }  // namespace beta

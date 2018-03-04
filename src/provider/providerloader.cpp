@@ -8,18 +8,19 @@ ProviderLoader::ProviderLoader(std::string providersDir)
     : providersDir(providersDir)
 {}
 
-std::shared_ptr<PathProvider> ProviderLoader::load(std::string filename) {
+std::shared_ptr<ProviderAdapter> ProviderLoader::load(std::string filename) {
     std::shared_ptr<PathProvider> provider;
     try {
         boost::shared_ptr<PathProvider> tmp = importProvider(filename);
         provider = getStdHandle(tmp);
         verify(provider);
+        // TODO: Print provider information using another method.
     } catch (std::exception &ex) {
         printf("failed to load provider %s\n", filename.c_str());
         printf("reason: %s\n", ex.what());
         throw ex;
     }
-    return provider;
+    return std::make_shared<ProviderAdapter>(provider);
 }
 
 boost::shared_ptr<PathProvider> ProviderLoader::importProvider(std::string filename) {
