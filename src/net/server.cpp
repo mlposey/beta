@@ -1,6 +1,6 @@
 #include "server.h"
 #include "path/path2d.h"
-#include "messageconverter.hpp"
+#include "messageconverter.h"
 
 namespace beta {
 

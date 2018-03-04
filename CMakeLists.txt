@@ -25,7 +25,7 @@ set(SOURCE_FILES
         src/provider/providerloader.cpp src/provider/providerloader.h
         src/net/protobuf/beta.grpc.pb.cc src/net/protobuf/beta.grpc.pb.h
         src/net/protobuf/beta.pb.cc src/net/protobuf/beta.pb.h
-        src/net/messageconverter.hpp
+        src/net/messageconverter.cpp src/net/messageconverter.h
         src/net/server.cpp src/net/server.h)
 
 add_executable(beta ${SOURCE_FILES})

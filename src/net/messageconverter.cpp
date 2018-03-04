@@ -1,20 +1,6 @@
-#pragma once
-#include "path/node.h"
-#include "path/path2d.h"
-#include "path/shareablepath.h"
-#include "protobuf/beta.grpc.pb.h"
+#include "messageconverter.h"
 
 namespace beta {
-
-/** Converts between protocol buffer messages and domain types */
-class MessageConverter {
-public:
-    static Node convert(const betagrpc::Node &node);
-    /** @returns nullptr if the route does not contain at least two nodes */
-    static std::shared_ptr<Path> convert(const betagrpc::Route *route);
-    static void convert(std::shared_ptr<Path> src, betagrpc::Route *dst);
-    static path_query convert(const betagrpc::RouteQuery *query);
-};
 
 Node MessageConverter::convert(const betagrpc::Node &node) {
     return {node.latitude(), node.longitude()};
