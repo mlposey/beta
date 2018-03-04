@@ -43,6 +43,7 @@ public:
 
 private:
     std::vector<CacheEntry> makeEntries(std::vector<std::shared_ptr<Path>> *paths);
+    
     const size_t capacityBytes;
     size_t currentSizeBytes;
     std::vector<CacheEntry> cache;
