@@ -37,6 +37,7 @@ Status Server::GetRoute(ServerContext *ctx, const RouteQuery *query, Route *rout
 }
 
 Status Server::MustGetRoute(ServerContext *ctx, const RouteQuery *query, Route *route) {
+    if (!provider) return GetRoute(ctx, query, route);
     // TODO: MustGetRoute
     return Status::OK;
 }
