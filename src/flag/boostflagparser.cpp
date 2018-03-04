@@ -7,7 +7,7 @@ BoostFlagParser::BoostFlagParser()
     : flagsDefinition("options") {
     flagsDefinition.add_options()
         ("help", "show usage information")
-        ("provider", po::value<std::string>(), "optionally specify a provider\n"
+        (providerKey, po::value<std::string>(), "optionally specify a provider\n"
                                                "This should not include the file extension.\n"
                                                "E.g, use gmaps -- not gmaps.so\n"
                                                "To change the provider search path, alter\n"
@@ -28,7 +28,7 @@ void BoostFlagParser::showHelp() const {
 }
 
 std::string BoostFlagParser::provider() const {
-    return userInput.count("provider") ? userInput["provider"].as<std::string>() : "";
+    return userInput.count(providerKey) ? userInput[providerKey].as<std::string>() : "";
 }
 
 }  // namespace beta
