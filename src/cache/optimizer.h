@@ -12,7 +12,7 @@ public:
      * One should assume that any value in cache prior to calling this
      * method may either be moved or deleted after Optimizer construction.
      */
-    explicit Optimizer(std::vector<cache_entry> &cache);
+    explicit Optimizer(std::vector<CacheEntry> &cache);
 
     /**
      * Produces an optimal cache whose size is not greater than capacityBytes
@@ -38,12 +38,12 @@ private:
     // The current size of the cache in bytes
     size_t currentSizeBytes;
     // The cache to be optimized
-    std::vector<cache_entry> &cache;
+    std::vector<CacheEntry> &cache;
 };
 
 /** Pairs a cache entry with the sharing ability per node of its path */
 struct Optimizer::ranked_entry {
-    cache_entry *entry;
+    CacheEntry *entry;
     double sharingAbilityPerNode;
 };
 

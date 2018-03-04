@@ -49,9 +49,7 @@ Status Server::AddRoute(ServerContext *ctx, const Route *route, AddResponse *res
     }
     printf("built path %s for client\n", path->str().c_str());
     
-    path_query query{*(path->begin()), *(path->end() - 1)};
-    cache->add(cache_entry{query, path});
-
+    cache->add(path);
     printf("done.\n");
     return Status::OK;
 }

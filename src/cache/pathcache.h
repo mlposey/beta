@@ -19,14 +19,20 @@ class PathCache {
 public:
     /**
      * Constructs a PathCache instance
+     * @param capacityBytes The maximum size of the cache during its lifetime
+     */
+    explicit PathCache(size_t capacityBytes);
+
+    /**
+     * Constructs a PathCache instance
      * @param entries The collection to start the cache with. This variable will
      *                be modified by the constructor.
      * @param capacityBytes The maximum size of the cache during its lifetime
      */
-    PathCache(std::vector<cache_entry> &entries, size_t capacityBytes);
+    PathCache(std::vector<std::shared_ptr<Path>> *paths, size_t capacityBytes);
 
     /** Adds an entry to the cache */
-    void add(const cache_entry &entry);
+    void add(std::shared_ptr<Path> path);
     /** Retrieves a path that answers the given query or nullptr if no such path exists */
     std::shared_ptr<Path> find(const path_query &query) const;
     
@@ -36,9 +42,10 @@ public:
     size_t size() const { return cache.size(); }
 
 private:
+    std::vector<CacheEntry> makeEntries(std::vector<std::shared_ptr<Path>> *paths);
     const size_t capacityBytes;
     size_t currentSizeBytes;
-    std::vector<cache_entry> cache;
+    std::vector<CacheEntry> cache;
 };
 
 }  // namespace beta

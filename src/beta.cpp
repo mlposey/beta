@@ -10,8 +10,7 @@ int main() {
     Config &config = Config::getInstance();
 
     // TODO: Load entries from disk if needed.
-    std::vector<cache_entry> entries;
-    PathCache cache(entries, config.getBytes("max_cache_mem"));
+    PathCache cache(config.getBytes("max_cache_mem"));
 
     // TODO: Load provider if needed.
     Server server(&cache, nullptr);
