@@ -1,7 +1,7 @@
 # BeTA
 BeTA is a caching system that maintains an optimal set of paths whose
-subpaths are used to answer queries. It uses gRPC for client communication
-and allows developers to write path provider plugins that can fetch paths
+subpaths are used to answer queries. It uses [gRPC](https://grpc.io/about/) for client communication
+and allows developers to write plugins that can fetch paths
 from external services in the event of a cache miss.
 
 # Status
@@ -11,7 +11,7 @@ the gRPC and Provider APIs. The name may even change; *SearchyFindyThing*
 sounds better every day.
 
 # Running the App
-There are three options for running the app: using Docker, downloading
+There are three options for running the app: using [Docker](https://docs.docker.com/engine/docker-overview/), downloading
 binaries, and building from source.
 
 ## Using Docker
