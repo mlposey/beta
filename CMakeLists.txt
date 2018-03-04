@@ -3,13 +3,14 @@ project(src)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
 set(Boost_USE_STATIC_LIBS ON)
-find_package(Boost REQUIRED COMPONENTS system filesystem)
+find_package(Boost REQUIRED COMPONENTS system filesystem program_options)
 INCLUDE_DIRECTORIES(src external)
 
 set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES
         src/flag/flagparser.h
+        src/flag/boostflagparser.cpp src/flag/boostflagparser.h
         src/beta.cpp
         external/nlohmann/json.hpp
         src/config/config.cpp src/config/config.h
