@@ -9,6 +9,7 @@ INCLUDE_DIRECTORIES(src external)
 set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES
+        src/flag/flagparser.h
         src/beta.cpp
         external/nlohmann/json.hpp
         src/config/config.cpp src/config/config.h
