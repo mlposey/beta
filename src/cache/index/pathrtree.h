@@ -25,9 +25,9 @@ using segment = bg::model::segment<point>;
 using path_ref = std::pair<segment, std::shared_ptr<Path>>;
 
 /**
- * Indexes paths in a R*-tree
+ * Indexes paths in a R-tree
  * 
- * PathRTree places each segment of a path into a R*-tree and uses point
+ * PathRTree places each segment of a path into an R-tree and uses point
  * intersections to determine if queries can be answered.
  */
 class PathRTree : public PathIndex {
@@ -55,7 +55,7 @@ public:
 private:
     void handleIntersectingPaths(point p, std::function<void(std::shared_ptr<Path>)> fn) const;
 
-    bgi::rtree<path_ref, bgi::rstar<16>> tree;
+    bgi::rtree<path_ref, bgi::quadratic<16>> tree;
 };
 
 }  // namespace beta
