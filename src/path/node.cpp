@@ -16,7 +16,8 @@ double Node::distanceTo(const Node &destination) const {
 }
 
 bool Node::isBetween(const Node &a, const Node &b) const {
-    return a.distanceTo(b) == a.distanceTo(*this) + this->distanceTo(b);
+    float l = (latitude() - a.latitude()) / (b.latitude() - a.latitude());
+    return abs(l - (longitude() - a.longitude()) / (b.longitude() - a.longitude())) < 0.01 && l >= 0 && l <= 1;
 }
     
 bool Node::operator==(const Node &other) const {
