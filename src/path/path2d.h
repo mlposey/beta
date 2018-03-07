@@ -1,5 +1,5 @@
 #pragma once
-#include <vector>
+#include <deque>
 #include "path.h"
 
 namespace beta {
@@ -7,24 +7,33 @@ namespace beta {
 /** Defines a path of connected nodes in a two-dimensional space */
 class Path2D : public Path {
 public:
+    Path2D() = default;
     /** Creates a Path2D instance with an initial two-node path */
     Path2D(const Node &origin, const Node &destination);
 
     /**
-     * Appends a node to the end of the path
+     * Pushes a node to the end of the path
      * 
      * By appending a node to the path, a new destination is created. This
      * may alter the existing real and euclidean distances.
      */
-    void add(const Node &node) override;
+    void push_back(const Node &node) override;
+
+    /**
+     * Pushes a node to the beginning of the path
+     * 
+     * By prepending a node to the path, a new origin is created. This
+     * may alter the existing real and euclidean distances.
+     */
+    void push_front(const Node &node) override;
 
     /** Determines if a node sits directly on any line of the path */
     bool contains(const Node &node) const override;
 
     /** Returns a constant iterator to the beginning of the path */
-    const_iterator begin() override { return &nodes[0]; }
+    const_iterator begin() override { return nodes.begin(); }
     /** Returns a constant iterator to a position one element past the path end */
-    const_iterator end() override { return &nodes[nodes.size()]; }
+    const_iterator end() override { return nodes.end(); }
     
     /** Returns the number of nodes in the path */
     size_t nodeCount() const override;
@@ -39,7 +48,7 @@ public:
     std::string str() const override;
 
 private:
-    std::vector<Node> nodes;
+    std::deque<Node> nodes;
     double realDist;
 };
 

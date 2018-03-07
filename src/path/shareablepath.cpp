@@ -32,45 +32,40 @@ ShareablePath::PathBuilder::PathBuilder(const std::shared_ptr<Path> &path, const
 {}
 
 std::shared_ptr<Path> ShareablePath::PathBuilder::build() {
+    subpath = std::make_shared<Path2D>();
     auto subpathStart = findSubpathStart();
     if (subpathStart == masterPath->end()) return nullptr;
 
     buildSubpath(subpathStart);
-    if (!foundDestination || !foundOrigin) return nullptr;
-
-    std::shared_ptr<Path> path = std::make_shared<Path2D>(subpathNodes[0], subpathNodes[1]);
-    for (size_t i = 2; i < subpathNodes.size(); i++) {
-        path->add(subpathNodes[i]);
-    }
-    return path;
+    return (foundOrigin && foundDestination) ? subpath : nullptr;
 }
 
 Path::const_iterator ShareablePath::PathBuilder::findSubpathStart() {
-    for (auto it = masterPath->begin(); it != masterPath->end() - 1; it++) {
-        if (query.origin.isBetween(*it, *(it+1))) {
+    for (auto it = masterPath->begin(); it != std::prev(masterPath->end()); it++) {
+        if (query.origin.isBetween(*it, *std::next(it))) {
             isBuildDirectionForward = true;
             foundOrigin = true;
             add(query.origin);
-            return query.origin == *(it+1) ? (it+2) : (it+1);
-        } else if (query.destination.isBetween(*it, *(it+1))) {
+            return query.origin == *std::next(it) ? std::next(it, 2) : std::next(it);
+        } else if (query.destination.isBetween(*it, *std::next(it))) {
             isBuildDirectionForward = false;
             foundDestination = true;
             add(query.destination);
-            return query.destination == *(it+1) ? (it+2) : (it+1);            
+            return query.destination == *std::next(it) ? std::next(it, 2) : std::next(it);            
         }
     }
     return masterPath->end();
 }
 
 void ShareablePath::PathBuilder::buildSubpath(Path::const_iterator it) {
-    for (; it != masterPath->end() - 1; it++) {
-        if (!foundOrigin && query.origin.isBetween(*it, *(it+1))) {
-            if (query.origin == *(it+1)) add(*it);
+    for (; it != std::prev(masterPath->end()); it++) {
+        if (!foundOrigin && query.origin.isBetween(*it, *std::next(it))) {
+            if (query.origin == *std::next(it)) add(*it);
             add(query.origin);
             foundOrigin = true;
             return;
-        } else if (!foundDestination && query.destination.isBetween(*it, *(it+1))) {
-            if (query.destination == *(it+1)) add(*it);            
+        } else if (!foundDestination && query.destination.isBetween(*it, *std::next(it))) {
+            if (query.destination == *std::next(it)) add(*it);            
             add(query.destination);
             foundDestination = true;
             return;
@@ -81,8 +76,8 @@ void ShareablePath::PathBuilder::buildSubpath(Path::const_iterator it) {
 }
 
 void ShareablePath::PathBuilder::add(const Node &node) {
-    if (isBuildDirectionForward) subpathNodes.push_back(node);
-    else subpathNodes.push_front(node);
+    if (isBuildDirectionForward) subpath->push_back(node);
+    else subpath->push_front(node);
 }
 
 }  // namespace beta

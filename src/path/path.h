@@ -1,5 +1,6 @@
 #pragma once
 #include <cstddef>
+#include <deque>
 #include "node.h"
 
 namespace beta {
@@ -8,10 +9,11 @@ namespace beta {
 struct Path {
     virtual ~Path() = default;
 
-    virtual void add(const Node &node) = 0;
+    virtual void push_back(const Node &node) = 0;
+    virtual void push_front(const Node &node) = 0;
     virtual bool contains(const Node &node) const = 0;
     
-    using const_iterator = const Node*;
+    using const_iterator = std::deque<Node>::iterator;
     virtual const_iterator begin() = 0;
     virtual const_iterator end() = 0;
     

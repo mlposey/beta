@@ -16,7 +16,7 @@ std::shared_ptr<Path> MessageConverter::convert(const betagrpc::Route *route) {
     std::shared_ptr<Path> path = std::make_shared<Path2D>(a, b);
 
     for (int i = 2; i < routeLength; i++) {
-        path->add(MessageConverter::convert(route->nodes(i)));
+        path->push_back(MessageConverter::convert(route->nodes(i)));
     }
     return path;
 }

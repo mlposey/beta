@@ -9,9 +9,14 @@ Path2D::Path2D(const Node &origin, const Node &destination) {
     realDist = origin.distanceTo(destination);
 }
 
-void Path2D::add(const Node &node) {
-    realDist += nodes.back().distanceTo(node);
+void Path2D::push_back(const Node &node) {
+    if (nodes.size() != 0) realDist += nodes.back().distanceTo(node);
     nodes.emplace_back(node);
+}
+
+void Path2D::push_front(const Node &node) {
+    if (nodes.size() != 0) realDist += node.distanceTo(nodes.front());
+    nodes.emplace_front(node);
 }
 
 bool Path2D::contains(const Node &node) const {
@@ -32,7 +37,7 @@ size_t Path2D::sizeBytes() const {
 }
 
 double Path2D::euclideanDistance() const {
-    return nodes[0].distanceTo(nodes.back());
+    return nodes.front().distanceTo(nodes.back());
 }
 
 double Path2D::realDistance() const {

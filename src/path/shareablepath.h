@@ -43,7 +43,7 @@ private:
 
     const path_query &query;
     const std::shared_ptr<Path> &masterPath;
-    std::deque<Node> subpathNodes;
+    std::shared_ptr<Path> subpath;
 
     bool isBuildDirectionForward;  // Are we appending or prepending nodes to the subpath?
     bool foundOrigin;
