@@ -1,10 +1,7 @@
 #pragma once
 #include <string>
 
-namespace beta {
-
-// The expected size in bytes of a Node object
-#define NODE_SIZE_BYTES 8    
+namespace beta {  
 
 /** Defines a geographical point with a latitude and longitude */
 class Node {

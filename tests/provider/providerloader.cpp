@@ -14,8 +14,8 @@ void ProviderLoaderTest::buildMockLib(std::string filename) {
     // This assumes the tests are being run from inside the build directory
     // CMake will copy the mock files in to the build directory when calling "cmake ."
     std::string cmd = "g++ -std=c++14 -I ./inc -fpic -c mock/" + filename + " -o mockprovider.o";
-    system(cmd.c_str());
-    system("g++ -shared -o mockprovider.so mockprovider.o");
+    ASSERT_EQ(0, system(cmd.c_str()));
+    ASSERT_EQ(0, system("g++ -shared -o mockprovider.so mockprovider.o"));
 }
 
 TEST_F(ProviderLoaderTest, load_validLib) {

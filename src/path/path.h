@@ -16,6 +16,7 @@ struct Path {
     virtual const_iterator end() = 0;
     
     virtual size_t nodeCount() const = 0;
+    virtual size_t sizeBytes() const = 0;
 
     virtual double euclideanDistance() const = 0;
     virtual double realDistance() const = 0;

@@ -2,7 +2,8 @@
 #include <memory>
 #include <vector>
 #include "pathprovider.h"
-#include "path/shareablepath.h"
+#include "path/path.h"
+#include "path/pathquery.h"
 
 namespace beta {
 

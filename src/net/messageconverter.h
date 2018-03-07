@@ -1,7 +1,7 @@
 #pragma once
 #include "path/node.h"
 #include "path/path2d.h"
-#include "path/shareablepath.h"
+#include "path/pathquery.h"
 #include "protobuf/beta.grpc.pb.h"
 
 namespace beta {

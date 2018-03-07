@@ -20,7 +20,7 @@ public:
 
     /** Returns the estimated size of the entry in bytes */
     size_t sizeBytes() const {
-        return sizeof(path_) + path_->nodeCount() * NODE_SIZE_BYTES;
+        return sizeof(*this) + path_->sizeBytes();
     }
 
 private:

@@ -7,27 +7,44 @@ find_package(Boost REQUIRED COMPONENTS system filesystem program_options)
 INCLUDE_DIRECTORIES(src external)
 
 set(CMAKE_CXX_STANDARD 14)
+set (CMAKE_CXX_FLAGS "-Wall -Werror -Ofast")
 
-set(SOURCE_FILES
+set(FLAG_SRC
         src/flag/flagparser.h
-        src/flag/boostflagparser.cpp src/flag/boostflagparser.h
-        src/beta.cpp
-        external/nlohmann/json.hpp
-        src/config/config.cpp src/config/config.h
-        src/path/node.cpp src/path/node.h
+        src/flag/boostflagparser.cpp)
+
+set(PATH_SRC
+        src/path/node.cpp
         src/path/path.h
-        src/path/path2d.cpp src/path/path2d.h
-        src/path/shareablepath.cpp src/path/shareablepath.h
+        src/path/pathquery.h
+        src/path/path2d.cpp
+        src/path/shareablepath.cpp)
+
+set(CACHE_SRC
         src/cache/cacheentry.h
-        src/cache/optimizer.cpp src/cache/optimizer.h
-        src/cache/pathcache.cpp src/cache/pathcache.h
+        src/cache/pathcache.cpp
+        src/cache/optimize/optimizer.cpp
+        src/cache/index/pathindex.h
+        src/cache/index/pathrtree.cpp)
+
+set(PROVIDER_SRC
         src/provider/pathprovider.h
-        src/provider/providerloader.cpp src/provider/providerloader.h
-        src/provider/provideradapter.cpp src/provider/provideradapter.h
+        src/provider/providerloader.cpp
+        src/provider/provideradapter.cpp)
+
+set(NET_SRC
         src/net/protobuf/beta.grpc.pb.cc src/net/protobuf/beta.grpc.pb.h
         src/net/protobuf/beta.pb.cc src/net/protobuf/beta.pb.h
         src/net/messageconverter.cpp src/net/messageconverter.h
-        src/net/server.cpp src/net/server.h)
+        src/net/server.cpp)
+
+set(CONFIG_SRC src/config/config.cpp)
+set(EXTERNAL_SRC external/nlohmann/json.hpp)
+
+set(SOURCE_FILES
+        ${FLAG_SRC} ${PATH_SRC} ${CACHE_SRC} ${PROVIDER_SRC} ${NET_SRC}
+        ${CONFIG_SRC} ${EXTERNAL_SRC}
+        src/beta.cpp)
 
 add_executable(beta ${SOURCE_FILES})
 target_link_libraries(beta
@@ -86,6 +103,7 @@ set(TEST_FILES
         tests/path/path2d.cpp
         tests/path/shareablepath.cpp
         tests/cache/pathcache.cpp
+        tests/cache/index/pathrtree.cpp
         tests/provider/providerloader.cpp)
 
 add_executable(tests ${TEST_FILES})

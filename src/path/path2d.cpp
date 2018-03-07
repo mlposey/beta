@@ -15,7 +15,7 @@ void Path2D::add(const Node &node) {
 }
 
 bool Path2D::contains(const Node &node) const {
-    for (int i = 0; i < nodes.size() - 1; i++) {
+    for (size_t i = 0; i < nodes.size() - 1; i++) {
         if (node.isBetween(nodes[i], nodes[i+1])) {
             return true;
         }
@@ -25,6 +25,10 @@ bool Path2D::contains(const Node &node) const {
 
 size_t Path2D::nodeCount() const {
     return nodes.size();
+}
+
+size_t Path2D::sizeBytes() const {
+    return sizeof(*this) + nodes.size() * sizeof(Node);
 }
 
 double Path2D::euclideanDistance() const {

@@ -39,7 +39,7 @@ std::shared_ptr<Path> ShareablePath::PathBuilder::build() {
     if (!foundDestination || !foundOrigin) return nullptr;
 
     std::shared_ptr<Path> path = std::make_shared<Path2D>(subpathNodes[0], subpathNodes[1]);
-    for (int i = 2; i < subpathNodes.size(); i++) {
+    for (size_t i = 2; i < subpathNodes.size(); i++) {
         path->add(subpathNodes[i]);
     }
     return path;

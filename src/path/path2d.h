@@ -28,6 +28,8 @@ public:
     
     /** Returns the number of nodes in the path */
     size_t nodeCount() const override;
+    /** Returns the size of the path in bytes */
+    size_t sizeBytes() const override;
     /** Returns the straight line distance from the path's origin to its destination */
     double euclideanDistance() const override;
     /** Returns the total distance of a each step in the path */
