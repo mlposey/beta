@@ -7,7 +7,8 @@
 namespace beta {
 
 void PathRTree::add(std::shared_ptr<Path> path) {
-    for (auto it = path->begin(); it != path->end() - 1;) {
+    auto last = std::prev(path->end());
+    for (auto it = path->begin(); it != last;) {
         point a = makePoint(*it++);
         point b = makePoint(*it);
         tree.insert(std::make_pair(segment(a, b), path));
