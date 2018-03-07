@@ -7,7 +7,7 @@ find_package(Boost REQUIRED COMPONENTS system filesystem program_options)
 INCLUDE_DIRECTORIES(src external)
 
 set(CMAKE_CXX_STANDARD 14)
-set (CMAKE_CXX_FLAGS "-Wall -Werror -Ofast")
+set (CMAKE_CXX_FLAGS "-Wall -Werror -Ofast -fno-omit-frame-pointer")
 
 set(FLAG_SRC
         src/flag/flagparser.h
