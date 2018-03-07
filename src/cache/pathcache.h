@@ -56,4 +56,9 @@ private:
     std::shared_ptr<PathIndex> pathIndex;
 };
 
+inline std::shared_ptr<Path> PathCache::find(const path_query &query) const {
+    // TODO: Use geographic tags to narrow search space.
+    return pathIndex->find(query);
+}
+
 }  // namespace beta

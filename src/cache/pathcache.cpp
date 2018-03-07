@@ -48,9 +48,4 @@ void PathCache::optimizeCache() {
     puts("finished optimization");
 }
 
-std::shared_ptr<Path> PathCache::find(const path_query &query) const {
-    // TODO: Use geographic tags to narrow search space.
-    return pathIndex->find(query);
-}
-
 }  // namespace beta
