@@ -1,8 +1,7 @@
 # BeTA
-BeTA is a caching system that maintains an optimal set of paths whose
-subpaths are used to answer queries. It uses [gRPC](https://grpc.io/about/) for client communication
-and allows developers to write plugins that can fetch paths
-from external services in the event of a cache miss.
+BeTA is a caching system that manages geospatial paths. It uses [gRPC](https://grpc.io/about/)
+for networking and lets developers write plugins that fetch external paths
+in the event of a cache miss.
 
 # Status
 This project is in a very early stage. As such, it is not recommended
