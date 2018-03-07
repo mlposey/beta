@@ -17,6 +17,7 @@ double Node::distanceTo(const Node &destination) const {
 
 bool Node::isBetween(const Node &a, const Node &b) const {
     float l = (latitude() - a.latitude()) / (b.latitude() - a.latitude());
+    // TODO: This delta may be too large.
     return abs(l - (longitude() - a.longitude()) / (b.longitude() - a.longitude())) < 0.01 && l >= 0 && l <= 1;
 }
     
