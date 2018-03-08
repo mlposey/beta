@@ -1,0 +1,4 @@
+<map id="beta::Config::getInstance" name="beta::Config::getInstance">
+<area shape="rect" id="node2" href="$classbeta_1_1Config.html#acdbe3ed74c8a336d9368127954708205" title="Gets the configuration value of a given key or &quot;&quot; if the key is unrecognized. " alt="" coords="424,5,577,32"/>
+<area shape="rect" id="node3" href="$classbeta_1_1Config.html#a644eae68e160d673962222dc7a8e4cfe" title="Gets the configuration value for a key that maps to a storage size. " alt="" coords="223,31,376,57"/>
+</map>

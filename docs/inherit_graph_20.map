@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$classbetagrpc_1_1Beta_1_1WithAsyncMethod__AddRoute.html" title="betagrpc::Beta::WithAsync\lMethod_AddRoute\&lt; BaseClass \&gt;" alt="" coords="157,5,376,47"/>
+<area shape="rect" id="node3" href="$classbetagrpc_1_1Beta_1_1WithAsyncMethod__GetRoute.html" title="betagrpc::Beta::WithAsync\lMethod_GetRoute\&lt; BaseClass \&gt;" alt="" coords="159,71,375,112"/>
+<area shape="rect" id="node4" href="$classbetagrpc_1_1Beta_1_1WithAsyncMethod__MustGetRoute.html" title="betagrpc::Beta::WithAsync\lMethod_MustGetRoute\&lt; BaseClass \&gt;" alt="" coords="144,136,389,177"/>
+<area shape="rect" id="node5" href="$classbetagrpc_1_1Beta_1_1WithGenericMethod__AddRoute.html" title="betagrpc::Beta::WithGeneric\lMethod_AddRoute\&lt; BaseClass \&gt;" alt="" coords="157,201,376,243"/>
+<area shape="rect" id="node6" href="$classbetagrpc_1_1Beta_1_1WithGenericMethod__GetRoute.html" title="betagrpc::Beta::WithGeneric\lMethod_GetRoute\&lt; BaseClass \&gt;" alt="" coords="159,267,375,308"/>
+<area shape="rect" id="node7" href="$classbetagrpc_1_1Beta_1_1WithGenericMethod__MustGetRoute.html" title="betagrpc::Beta::WithGeneric\lMethod_MustGetRoute\&lt; BaseClass \&gt;" alt="" coords="144,332,389,373"/>
+<area shape="rect" id="node8" href="$classbetagrpc_1_1Beta_1_1WithStreamedUnaryMethod__AddRoute.html" title="betagrpc::Beta::WithStreamed\lUnaryMethod_AddRoute\&lt; BaseClass \&gt;" alt="" coords="140,397,393,439"/>
+<area shape="rect" id="node9" href="$classbetagrpc_1_1Beta_1_1WithStreamedUnaryMethod__GetRoute.html" title="betagrpc::Beta::WithStreamed\lUnaryMethod_GetRoute\&lt; BaseClass \&gt;" alt="" coords="141,463,392,504"/>
+<area shape="rect" id="node10" href="$classbetagrpc_1_1Beta_1_1WithStreamedUnaryMethod__MustGetRoute.html" title="betagrpc::Beta::WithStreamed\lUnaryMethod_MustGetRoute\l\&lt; BaseClass \&gt;" alt="" coords="167,527,366,583"/>
+</map>

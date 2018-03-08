@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classbeta_1_1FlagParser.html" title="Describes a type that parses command line flags. " alt="" coords="5,5,124,32"/>
+<area shape="rect" id="node2" href="$classbeta_1_1BoostFlagParser.html" title="Uses Boost.ProgramOptions to parse command&#45;line flags. " alt="" coords="172,5,324,32"/>
+</map>

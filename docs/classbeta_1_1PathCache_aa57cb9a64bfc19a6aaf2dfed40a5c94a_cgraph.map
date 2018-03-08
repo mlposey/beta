@@ -1,0 +1,5 @@
+<map id="beta::PathCache::PathCache" name="beta::PathCache::PathCache">
+<area shape="rect" id="node2" href="$classbeta_1_1PathCache.html#a8df35e889ba818cf3cab89bff7b441a3" title="Adds a path to the cache. " alt="" coords="247,31,396,57"/>
+<area shape="rect" id="node3" href="$classbeta_1_1CacheEntry.html#a2bd83361e2bd1c123a937bd616305472" title="Returns the estimated size of the entry in bytes. " alt="" coords="444,5,635,32"/>
+<area shape="rect" id="node4" href="$classbeta_1_1Optimizer.html#a80a78c7d77f00c35a73ed5864c7d07fe" title="Produces a space&#45;optimal cache and index. " alt="" coords="455,56,623,83"/>
+</map>
