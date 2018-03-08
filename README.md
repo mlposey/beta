@@ -9,6 +9,10 @@ for production use due to both the scope of testing and stability of
 the gRPC and Provider APIs. The name may even change; *SearchyFindyThing*
 sounds better every day.
 
+# Documentation
+Doxygen produces the documentation in the `docs` folder. You can find a live
+version of the docs [here](https://mlposey.github.io/beta/annotated.html).
+
 # Running the App
 There are three options for running the app: using [Docker](https://docs.docker.com/engine/docker-overview/), downloading
 binaries, and building from source.
