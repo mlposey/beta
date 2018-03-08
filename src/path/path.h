@@ -13,9 +13,9 @@ struct Path {
     virtual void push_front(const Node &node) = 0;
     virtual bool contains(const Node &node) const = 0;
     
-    using const_iterator = std::deque<Node>::iterator;
-    virtual const_iterator begin() = 0;
-    virtual const_iterator end() = 0;
+    using iterator = std::deque<Node>::iterator;
+    virtual iterator begin() = 0;
+    virtual iterator end() = 0;
     
     virtual size_t nodeCount() const = 0;
     virtual size_t sizeBytes() const = 0;

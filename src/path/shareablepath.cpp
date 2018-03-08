@@ -32,7 +32,7 @@ std::shared_ptr<Path> ShareablePath::PathBuilder::build() {
     return (foundOrigin && foundDestination) ? subpath : nullptr;
 }
 
-Path::const_iterator ShareablePath::PathBuilder::findSubpathStart() {
+Path::iterator ShareablePath::PathBuilder::findSubpathStart() {
     for (auto it = masterPath->begin(); it != std::prev(masterPath->end()); it++) {
         if (query.origin.isBetween(*it, *std::next(it))) {
             isBuildDirectionForward = true;
@@ -49,7 +49,7 @@ Path::const_iterator ShareablePath::PathBuilder::findSubpathStart() {
     return masterPath->end();
 }
 
-void ShareablePath::PathBuilder::buildSubpath(Path::const_iterator it) {
+void ShareablePath::PathBuilder::buildSubpath(Path::iterator it) {
     for (; it != std::prev(masterPath->end()); ++it) {
         if (!foundOrigin && query.origin.isBetween(*it, *std::next(it))) {
             if (query.origin == *std::next(it)) add(*it);

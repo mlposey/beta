@@ -30,10 +30,10 @@ public:
     /** Determines if a node sits directly on any line of the path */
     bool contains(const Node &node) const override;
 
-    /** Returns a constant iterator to the beginning of the path */
-    const_iterator begin() override { return nodes.begin(); }
-    /** Returns a constant iterator to a position one element past the path end */
-    const_iterator end() override { return nodes.end(); }
+    /** Returns an iterator to the beginning of the path */
+    iterator begin() override { return nodes.begin(); }
+    /** Returns an iterator to a position one element past the path end */
+    iterator end() override { return nodes.end(); }
     
     /** Returns the number of nodes in the path */
     size_t nodeCount() const override;

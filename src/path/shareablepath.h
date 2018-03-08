@@ -35,8 +35,8 @@ public:
     std::shared_ptr<Path> build();
 
 private:
-    Path::const_iterator findSubpathStart();
-    void buildSubpath(Path::const_iterator subpathOrigin);
+    Path::iterator findSubpathStart();
+    void buildSubpath(Path::iterator subpathOrigin);
     void add(const Node &node);
 
     const path_query &query;
