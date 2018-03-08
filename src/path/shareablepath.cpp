@@ -6,14 +6,6 @@ namespace beta {
 
 ShareablePath::ShareablePath(std::shared_ptr<Path> path): path(path) {}
 
-size_t ShareablePath::sharingAbility(const std::vector<path_query> &queries) const {
-    size_t sa = 0;
-    for (const auto &query : queries) {
-        if (canShare(query)) sa++;
-    }
-    return sa;
-}
-
 bool ShareablePath::canShare(const path_query &query) const {
     return path->contains(query.origin) && path->contains(query.destination);
 }
@@ -58,7 +50,7 @@ Path::const_iterator ShareablePath::PathBuilder::findSubpathStart() {
 }
 
 void ShareablePath::PathBuilder::buildSubpath(Path::const_iterator it) {
-    for (; it != std::prev(masterPath->end()); it++) {
+    for (; it != std::prev(masterPath->end()); ++it) {
         if (!foundOrigin && query.origin.isBetween(*it, *std::next(it))) {
             if (query.origin == *std::next(it)) add(*it);
             add(query.origin);

@@ -10,7 +10,7 @@ namespace beta {
 class ProviderLoader {
 public:
     /** Creates a ProviderLoader that searches a given directory for providers */
-    ProviderLoader(std::string providersDir);
+    explicit ProviderLoader(std::string providersDir);
 
     /**
      * Loads a provider from the providers directory

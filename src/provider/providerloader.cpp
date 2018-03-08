@@ -19,7 +19,7 @@ std::shared_ptr<ProviderAdapter> ProviderLoader::load(std::string filename) {
     } catch (std::exception &ex) {
         printf("failed to load provider file %s\n", filename.c_str());
         printf("reason: %s\n", ex.what());
-        throw ex;
+        throw;
     }
     return std::make_shared<ProviderAdapter>(provider);
 }

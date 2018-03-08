@@ -18,7 +18,7 @@ namespace beta {
  */
 class ProviderAdapter {
 public:
-    ProviderAdapter(std::shared_ptr<PathProvider> provider);
+    explicit ProviderAdapter(std::shared_ptr<PathProvider> provider);
 
     /**
      * Sends a query request to the provider

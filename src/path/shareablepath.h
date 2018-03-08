@@ -11,8 +11,6 @@ namespace beta {
 class ShareablePath  {
 public:
     explicit ShareablePath(std::shared_ptr<Path> path);
-    /** Computes a score that represents the path's ability to benefit the query set */
-    size_t sharingAbility(const std::vector<path_query> &queries) const;
     /** Determines if the path can provide a subpath that answers a query */
     bool canShare(const path_query &query) const;
     /** Returns a subpath from the path that answers the query -- or nullptr if no subpath exists */

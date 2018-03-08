@@ -7,7 +7,7 @@ namespace beta {
 /** Pairs a path query with the path that answers it */
 class CacheEntry {
 public:
-    CacheEntry(std::shared_ptr<Path> path) : path_(path) {}
+    explicit CacheEntry(std::shared_ptr<Path> path) : path_(path) {}
 
     /** Returns a query containing the entry origin and destination */
     path_query query() const {
