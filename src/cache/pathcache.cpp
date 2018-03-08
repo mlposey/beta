@@ -15,28 +15,25 @@ PathCache::PathCache(std::vector<std::shared_ptr<Path>> *paths, size_t capacityB
     if (capacityBytes == 0) throw std::runtime_error("path cache size must be > 0");
 
     if (paths) {
-        for (auto &path : *paths) add(path);
+        for (auto &path : *paths) {
+            add(path);
+        }
     }
 }
 
 void PathCache::add(std::shared_ptr<Path> path) {
     CacheEntry entry(path);
+
     size_t newSize = currentSizeBytes + entry.sizeBytes() + pathIndex->sizeBytes(path);
-    
-    if (newSize < capacityBytes) {
-        cache.push_back(entry);
-        pathIndex->add(path);
-        currentSizeBytes = newSize;
-    } else {
+    if (newSize >= capacityBytes) {
         optimizeCache();
-        if (currentSizeBytes < capacityBytes) {
-            cache.emplace_back(path);
-            pathIndex->add(path);
-            currentSizeBytes += entry.sizeBytes() + pathIndex->sizeBytes(path);
-        } else {
-            throw std::overflow_error("memory usage exceeded limit " + std::to_string(capacityBytes));
+        if (currentSizeBytes >= capacityBytes) {
+            throw std::overflow_error("memory usage exceeded limit " + std::to_string(capacityBytes));            
         }
-    }
+    } else currentSizeBytes = newSize;
+
+    cache.push_back(entry);
+    pathIndex->add(path);
 }
 
 void PathCache::optimizeCache() {
