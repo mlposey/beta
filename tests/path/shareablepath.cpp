@@ -30,8 +30,8 @@ TEST_F(ShareablePathTest, canAnswer) {
     path_query answerableQuery{{4.0f, 5.0f}, {8.0f, 2.0f}};
     path_query unanswerableQuery{{4.0f, 5.0f}, {7.0f, 7.0f}};
 
-    ASSERT_TRUE(path.canShare(answerableQuery));
-    ASSERT_FALSE(path.canShare(unanswerableQuery));
+    ASSERT_TRUE(path.canShare(answerableQuery)) << "could not answer answerable query";
+    ASSERT_FALSE(path.canShare(unanswerableQuery)) << "incorrectly answered unanswerable query";
 }
 
 TEST_F(ShareablePathTest, share) {

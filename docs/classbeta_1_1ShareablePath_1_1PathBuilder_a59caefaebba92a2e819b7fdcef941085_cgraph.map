@@ -1,3 +1,4 @@
 <map id="beta::ShareablePath::PathBuilder::build" name="beta::ShareablePath::PathBuilder::build">
 <area shape="rect" id="node2" href="$classbeta_1_1Node.html#afc592ca9c52234d534d7719142866133" title="Determines if the node sits on the straight line between a and b. " alt="" coords="193,13,348,39"/>
+<area shape="rect" id="node3" href="$classbeta_1_1Node.html#a8de25a0e8605e63cfa0c1c061b51169e" title="Computes the euclidean distance to the destination node. " alt="" coords="396,13,555,39"/>
 </map>
