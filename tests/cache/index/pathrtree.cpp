@@ -14,9 +14,9 @@ public:
 
 std::shared_ptr<Path> PathRTreeTest::buildPath() {
     std::shared_ptr<Path> path = std::make_shared<Path2D>(Node{0.0f, 9.0f}, Node{3.0f, 5.0f});    
-    path->add({6.0f, 5.0f});
-    path->add({6.0f, 2.0f});
-    path->add({9.0f, 2.0f});
+    path->push_back({6.0f, 5.0f});
+    path->push_back({6.0f, 2.0f});
+    path->push_back({9.0f, 2.0f});
     return path;
 }
 
@@ -75,7 +75,7 @@ TEST_F(PathRTreeTest, contains_path) {
 
     ASSERT_TRUE(paths->contains(path));
     auto extended = buildPath();
-    extended->add(Node(0.0f, 0.0f));
+    extended->push_back(Node(0.0f, 0.0f));
     ASSERT_FALSE(paths->contains(extended));
 }
 

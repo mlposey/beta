@@ -24,29 +24,29 @@ std::vector<std::shared_ptr<Path>> PathCacheTest::makePaths() {
     std::vector<std::shared_ptr<Path>> entries;
 
     std::shared_ptr<Path> path1 = std::make_shared<Path2D>(Node{0.0f, 9.0f}, Node{3.0f, 5.0f});
-    path1->add({6.0f, 5.0f});
-    path1->add({6.0f, 2.0f});
-    path1->add({9.0f, 2.0f});
+    path1->push_back({6.0f, 5.0f});
+    path1->push_back({6.0f, 2.0f});
+    path1->push_back({9.0f, 2.0f});
     entries.push_back(path1);
 
     std::shared_ptr<Path> path2 = std::make_shared<Path2D>(Node{4.0f, 5.0f}, Node{6.0f, 5.0f});
-    path2->add({6.0f, 2.0f});
-    path2->add({8.0f, 2.0f});
+    path2->push_back({6.0f, 2.0f});
+    path2->push_back({8.0f, 2.0f});
     entries.push_back(path2);
 
     std::shared_ptr<Path> path3 = std::make_shared<Path2D>(Node{3.0f, 0.0f}, Node{3.0f, 5.0f});
-    path3->add({4.0f, 8.0f});
-    path3->add({9.0f, 8.0f});
+    path3->push_back({4.0f, 8.0f});
+    path3->push_back({9.0f, 8.0f});
     entries.push_back(path3);
 
     std::shared_ptr<Path> path4 = std::make_shared<Path2D>(Node{3.0f, 2.0f}, Node{3.0f, 5.0f});
-    path4->add({4.0f, 8.0f});
-    path4->add({7.0f, 8.0f});
+    path4->push_back({4.0f, 8.0f});
+    path4->push_back({7.0f, 8.0f});
     entries.push_back(path4);
 
     std::shared_ptr<Path> path5 = std::make_shared<Path2D>(Node{3.0f, 3.0f}, Node{3.0f, 5.0f});
-    path5->add({4.0f, 8.0f});
-    path5->add({6.0f, 8.0f});
+    path5->push_back({4.0f, 8.0f});
+    path5->push_back({6.0f, 8.0f});
     entries.push_back(path5);
 
     return entries;

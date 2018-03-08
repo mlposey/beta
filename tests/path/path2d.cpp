@@ -10,7 +10,7 @@ TEST_F(Path2DTest, nodeCount) {
     Path2D path({0.0f, 9.0f}, {3.0f, 5.0f});
     ASSERT_EQ(2, path.nodeCount());
 
-    path.add({2.0f, 1.0f});
+    path.push_back({2.0f, 1.0f});
     ASSERT_EQ(3, path.nodeCount());
 }
 
@@ -25,7 +25,7 @@ TEST_F(Path2DTest, realDistance) {
     ASSERT_EQ(path.euclideanDistance(), path.realDistance());
     
     Node c{0.0f, 0.0f};
-    path.add(c);
+    path.push_back(c);
 
     double expectedDistance = a.distanceTo(b) + b.distanceTo(c);
     ASSERT_EQ(expectedDistance, path.realDistance());
@@ -34,7 +34,7 @@ TEST_F(Path2DTest, realDistance) {
 TEST_F(Path2DTest, contains) {
     Node a{0.0f, 9.0f}, b{3.0f, 5.0f};
     Path2D path(a, b);
-    path.add({2.9f, 9.9f});
+    path.push_back({2.9f, 9.9f});
 
     ASSERT_TRUE(path.contains(a));
     ASSERT_TRUE(path.contains(b));
@@ -54,5 +54,5 @@ TEST_F(Path2DTest, constIterators) {
 
     ASSERT_EQ(a, *it++);
     ASSERT_EQ(b, *it++);
-    ASSERT_EQ(path.end(), it);
+    ASSERT_TRUE(path.end() == it);
 }

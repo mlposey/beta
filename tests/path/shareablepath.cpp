@@ -19,9 +19,9 @@ public:
 
 std::shared_ptr<Path> ShareablePathTest::buildPath() {
     std::shared_ptr<Path> path = std::make_shared<Path2D>(Node{0.0f, 9.0f}, Node{3.0f, 5.0f});    
-    path->add({6.0f, 5.0f});
-    path->add({6.0f, 2.0f});
-    path->add({9.0f, 2.0f});
+    path->push_back({6.0f, 5.0f});
+    path->push_back({6.0f, 2.0f});
+    path->push_back({9.0f, 2.0f});
     return path;
 }
 
@@ -32,15 +32,6 @@ TEST_F(ShareablePathTest, canAnswer) {
 
     ASSERT_TRUE(path.canShare(answerableQuery));
     ASSERT_FALSE(path.canShare(unanswerableQuery));
-}
-
-TEST_F(ShareablePathTest, sharingAbility) {
-    ShareablePath path(buildPath());
-    path_query answerableQuery{{4.0f, 5.0f}, {8.0f, 2.0f}};
-    path_query unanswerableQuery{{4.0f, 5.0f}, {7.0f, 7.0f}};
-    std::vector<path_query> queries{answerableQuery, unanswerableQuery};
-
-    ASSERT_EQ(1, path.sharingAbility(queries));
 }
 
 TEST_F(ShareablePathTest, share) {
