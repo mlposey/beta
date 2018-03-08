@@ -3,19 +3,15 @@
 namespace beta {
 
 Node MessageConverter::convert(const betagrpc::Node &node) {
-    return {node.latitude(), node.longitude()};
+    return Node(node.latitude(), node.longitude());
 }
 
 std::shared_ptr<Path> MessageConverter::convert(const betagrpc::Route *route) {
     const int routeLength = route->nodes_size();
-    if (routeLength < 2) {
-        return nullptr;
-    }
-    Node a = MessageConverter::convert(route->nodes(0));
-    Node b = MessageConverter::convert(route->nodes(1));
-    std::shared_ptr<Path> path = std::make_shared<Path2D>(a, b);
-
-    for (int i = 2; i < routeLength; i++) {
+    if (routeLength < 2) return nullptr;
+    
+    auto path = std::make_shared<Path2D>();
+    for (int i = 0; i < routeLength; ++i) {
         path->push_back(MessageConverter::convert(route->nodes(i)));
     }
     return path;
@@ -23,7 +19,7 @@ std::shared_ptr<Path> MessageConverter::convert(const betagrpc::Route *route) {
 
 void MessageConverter::convert(std::shared_ptr<Path> src, betagrpc::Route *dst) {
     dst->set_distance(src->realDistance());
-    for (auto it = src->begin(); it != src->end(); it++) {
+    for (auto it = src->begin(); it != src->end(); ++it) {
         betagrpc::Node *node = dst->add_nodes();
         node->set_latitude(it->latitude());
         node->set_longitude(it->longitude());
