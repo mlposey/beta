@@ -25,9 +25,8 @@ std::shared_ptr<Path> ProviderAdapter::convert(const std::vector<float> &rawPath
     const size_t coordCount = rawPath.size();
     if (coordCount < 4 || coordCount % 2 != 0) return nullptr;
     
-    Node a(rawPath[0], rawPath[1]), b(rawPath[2], rawPath[3]);
-    std::shared_ptr<Path> path = std::make_shared<Path2D>(a, b);
-    for (size_t i = 4; i < coordCount - 1; i++) {
+    auto path = std::make_shared<Path2D>();
+    for (size_t i = 0; i < coordCount - 1; ++i) {
         path->push_back(Node(rawPath[i], rawPath[i + 1]));
     }
     return path;
