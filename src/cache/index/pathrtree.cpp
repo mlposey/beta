@@ -53,7 +53,7 @@ void PathRTree::handleIntersectingPaths(point p, std::function<void(std::shared_
 }
 
 bool PathRTree::contains(std::shared_ptr<Path> path) const {
-    return contains(path_query{*(path->begin()), *(path->end() - 1)});
+    return contains(path_query{*(path->begin()), *(std::prev(path->end()))});
 }
 
 bool PathRTree::contains(const path_query &query) const {
