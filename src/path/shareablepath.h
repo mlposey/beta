@@ -18,7 +18,6 @@ public:
 
 private:
     class PathBuilder;
-    
     std::shared_ptr<Path> path;
 };
 
