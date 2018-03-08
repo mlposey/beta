@@ -1,5 +1,5 @@
 {
     "port": "1995",
     "provider_dir": "./providers",
-    "max_cache_mem": "100MB"
+    "max_cache_mem": "1GB"
 }
