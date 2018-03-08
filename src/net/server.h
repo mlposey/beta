@@ -18,9 +18,14 @@ using betagrpc::AddResponse;
 
 namespace beta {
 
-/** Handles gRPC requests */
+/** Routes gRPC requests to the internal cache */
 class Server final : public Beta::Service {
 public:
+    /**
+     * Creates a new server instance
+     * @param cache the cache used to answer requests
+     * @param provider an optional provider to handle cache misses; may be nullptr
+     */
     Server(PathCache *cache, std::shared_ptr<ProviderAdapter> provider);
 
     /** Starts a blocking instance of the server at the given port */
