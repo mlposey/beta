@@ -21,5 +21,5 @@ TEST_F(ConfigTest, getString_keyMissing) {
 // to the constructor instead.
 TEST_F(ConfigTest, getBytes) {
     Config &config = Config::getInstance();
-    ASSERT_EQ(100 * 1'000'000, config.getBytes("max_cache_mem"));
+    ASSERT_EQ(1000 * 1'000'000, config.getBytes("max_cache_mem"));
 }
