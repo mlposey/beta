@@ -26,7 +26,7 @@ public:
      * @param cache the cache used to answer requests
      * @param provider an optional provider to handle cache misses; may be nullptr
      */
-    Server(PathCache *cache, std::shared_ptr<ProviderAdapter> provider);
+    Server(PathCache cache, std::shared_ptr<ProviderAdapter> provider);
 
     /** Starts a blocking instance of the server at the given port */
     void listen(std::string port);
@@ -36,7 +36,7 @@ public:
     Status AddRoute(ServerContext *ctx, const Route *route, AddResponse *res) override;
 
 private:
-    PathCache *cache;
+    PathCache cache;
     std::shared_ptr<ProviderAdapter> provider;
 };
 

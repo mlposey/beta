@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
     Config &config = Config::getInstance();
     PathCache cache(config.getBytes("max_cache_mem"));
     
-    Server server(&cache, loadProvider(&flagParser));
+    Server server(std::move(cache), loadProvider(&flagParser));
     server.listen(config.getString("port"));
     return 0;
 }
