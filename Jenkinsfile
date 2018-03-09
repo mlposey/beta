@@ -11,6 +11,11 @@ pipeline {
             steps {
                 sh 'sh archive-release.sh ${BUILD_NUMBER}'
             }
+            post {
+                always {
+                    archiveArtifacts '*.tar.gz'
+                }
+            }
         }
     }
 }
