@@ -9,6 +9,7 @@ pipeline {
         stage('Archive') {
             when { branch 'master' }
             steps {
+                sh 'rm *.tar.gz || true'
                 sh 'sh archive-release.sh ${BUILD_NUMBER}'
             }
             post {
