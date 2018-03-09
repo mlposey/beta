@@ -24,7 +24,7 @@
             std::string author() const { return "Me - me@example.com"; }
 
             std::vector<float> findPath(float srcLat, float srcLng, float dstLat, float dstLng) {
-                // Query external path-finding engine and return result...
+                Query external path-finding engine and return result...
             }
         };
 

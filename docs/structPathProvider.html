@@ -126,9 +126,13 @@ virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
      std::string author() const { return "Me - me@example.com"; }
 
      std::vector&lt;float&gt; findPath(float srcLat, float srcLng, float dstLat, float dstLng) {
-</pre><p> Query external path-finding engine and return result... } };</p>
-<p>extern "C" BOOST_SYMBOL_EXPORT MyPathProvider provider; MyPathProvider provider;</p>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+         Query external path-finding engine and return result...
+     }
+ };
+
+ extern "C" BOOST_SYMBOL_EXPORT MyPathProvider provider;
+ MyPathProvider provider;
+</pre><dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 
 <p>Definition at line <a class="el" href="pathprovider_8h_source.html#l00036">36</a> of file <a class="el" href="pathprovider_8h_source.html">pathprovider.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
