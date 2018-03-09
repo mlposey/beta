@@ -1,4 +1,6 @@
 # BeTA
+![Build Status](http://jenkins.marcusposey.com:8081/buildStatus/icon?job=mlposey/beta/master)
+
 BeTA is a caching system that manages geospatial paths. It uses [gRPC](https://grpc.io/about/)
 for networking and lets developers write plugins that fetch external paths
 in the event of a cache miss.
