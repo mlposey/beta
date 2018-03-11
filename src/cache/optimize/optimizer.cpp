@@ -52,9 +52,16 @@ void Optimizer::prune(size_t capacityBytes, size_t &currentSizeBytes) {
         if (currentSizeBytes + cost < capacityBytes) {
             currentSizeBytes += cost;
         } else {
-            cache.erase(it, cache.end());
+            chop(it);
             return;
         }
+    }
+}
+
+void Optimizer::chop(std::list<CacheEntry>::iterator begin) {
+    while (begin != cache.end()) {
+        index->remove(begin->path());
+        begin = cache.erase(begin);
     }
 }
 

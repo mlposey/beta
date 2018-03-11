@@ -47,6 +47,8 @@ private:
      * This requires the cache to be sorted by sharing ability per node descencing.
      */
     void prune(size_t capacityBytes, size_t &currentSizeBytes);
+    /** Deletes cache and index elements from begin until the end */
+    void chop(std::list<CacheEntry>::iterator begin);
 
     std::list<CacheEntry> &cache;
     std::shared_ptr<PathIndex> index;
