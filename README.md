@@ -12,8 +12,12 @@ the gRPC and Provider APIs. The name may even change; *SearchyFindyThing*
 sounds better every day.
 
 # Documentation
-Doxygen produces the documentation in the `docs` folder. You can find a live
-version of the docs [here](https://mlposey.github.io/beta/annotated.html).
+[Doxygen](http://www.stack.nl/~dimitri/doxygen/) is used to document the
+source code. That documentation is hosted [here](https://mlposey.github.io/beta/annotated.html).
+
+Additionally, the [beta-example](https://github.com/mlposey/beta-example)
+repository contains reference implementations for a client and provider
+plugin.
 
 # Running the App
 There are three options for running the app: using [Docker](https://docs.docker.com/engine/docker-overview/), downloading
