@@ -49,9 +49,8 @@ std::shared_ptr<Path> PathRTree::find(const path_query &query) const {
         if (candidates.find(path.get()) != candidates.end()) {
             ShareablePath spath(path);
             match = spath.share(query);
-            return false;
         }
-        return true;
+        return match == nullptr;
     });
     return match;
 }
