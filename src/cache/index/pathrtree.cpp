@@ -62,14 +62,6 @@ void PathRTree::handleIntersecting(const Node &n, const path_handler &handler) c
     }
 }
 
-bool PathRTree::contains(std::shared_ptr<Path> path) const {
-    return contains(path_query{*(path->begin()), *(std::prev(path->end()))});
-}
-
-bool PathRTree::contains(const path_query &query) const {
-    return find(query) != nullptr;
-}
-
 size_t PathRTree::sizeBytes(std::shared_ptr<Path> path) const {
     return (path->nodeCount() - 1) * sizeof(path_ref);
 }

@@ -44,11 +44,6 @@ public:
      */
     std::shared_ptr<Path> find(const path_query &query) const override;
 
-    /** Determines if the tree contains a path that matches the argument exactly */
-    bool contains(std::shared_ptr<Path> path) const override;
-    /** Determines if the tree contains a path that contains the query origin and destination */
-    bool contains(const path_query &query) const override;
-
     /** Returns the size that a given path would consume in the tree */
     size_t sizeBytes(std::shared_ptr<Path> path) const override;
 

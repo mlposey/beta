@@ -67,25 +67,3 @@ TEST_F(PathRTreeTest, remove_single) {
     pathIndex->remove(path1);
     ASSERT_FALSE(pathIndex->find(query) == nullptr);        
 }
-
-TEST_F(PathRTreeTest, contains_path) {
-    std::unique_ptr<PathIndex> paths = std::make_unique<PathRTree>();
-    auto path = buildPath();
-    paths->add(path);
-
-    ASSERT_TRUE(paths->contains(path));
-    auto extended = buildPath();
-    extended->push_back(Node(0.0f, 0.0f));
-    ASSERT_FALSE(paths->contains(extended));
-}
-
-TEST_F(PathRTreeTest, contains_query) {
-    std::unique_ptr<PathIndex> paths = std::make_unique<PathRTree>();
-    auto path = buildPath();
-    paths->add(path);
-
-    path_query query{*(path->begin()), *(path->end() - 1)};
-    ASSERT_TRUE(paths->contains(query));
-    query.destination = Node(0.0f, 0.0f);    
-    ASSERT_FALSE(paths->contains(query));
-}

@@ -11,8 +11,6 @@ struct PathIndex {
     virtual void add(std::shared_ptr<Path> path) = 0;
     virtual void remove(std::shared_ptr<Path> path) = 0;
     virtual std::shared_ptr<Path> find(const path_query &query) const = 0;
-    virtual bool contains(std::shared_ptr<Path> path) const = 0;
-    virtual bool contains(const path_query &query) const = 0;
     virtual size_t sizeBytes(std::shared_ptr<Path> path) const = 0;
 };
 
