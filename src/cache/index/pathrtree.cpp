@@ -16,40 +16,51 @@ void PathRTree::add(std::shared_ptr<Path> path) {
 }
 
 void PathRTree::remove(std::shared_ptr<Path> path) {
-    std::vector<path_ref> toDelete;
-    for (auto it = path->begin(); it != path->end(); it++) {
-        point p = makePoint(*it);
-        tree.query(bgi::intersects(p), boost::make_function_output_iterator([&](path_ref const& ref){
-            if (ref.second.get() == path.get()) {
-                toDelete.push_back(ref);
-                return;
+    std::vector<path_ref> toDelete = collectReferences(path);
+    for (const path_ref &ref : toDelete) tree.remove(ref);
+}
+
+std::vector<path_ref> PathRTree::collectReferences(std::shared_ptr<Path> path) {
+    std::vector<path_ref> refs;
+    refs.reserve(path->nodeCount() - 1);
+
+    auto pathEnd = std::prev(path->end()); // The last point won't have an entry.
+    for (auto pathIt = path->begin(); pathIt != pathEnd; ++pathIt) {
+        point p = makePoint(*pathIt);
+        for (auto treeIt = tree.qbegin(bgi::intersects(p)); treeIt != tree.qend(); ++treeIt) {
+            if (treeIt->second.get() == path.get()) {
+                refs.push_back(*treeIt);
+                break;
             }
-        }));
+        }
     }
-    for (auto ref : toDelete) tree.remove(ref);
+    return refs;
 }
 
 std::shared_ptr<Path> PathRTree::find(const path_query &query) const {
     std::unordered_set<Path*> candidates;
-    handleIntersectingPaths(makePoint(query.origin), [&](auto path) {
+    handleIntersecting(query.origin, [&](const std::shared_ptr<Path> &path) {
         candidates.insert(path.get());
+        return true;
     });
 
     std::shared_ptr<Path> match;
-    handleIntersectingPaths(makePoint(query.destination), [&](auto path) {
+    handleIntersecting(query.destination, [&](const std::shared_ptr<Path> &path) {
         if (candidates.find(path.get()) != candidates.end()) {
             ShareablePath spath(path);
             match = spath.share(query);
-            return;
+            return false;
         }
+        return true;
     });
     return match;
 }
 
-void PathRTree::handleIntersectingPaths(point p, std::function<void(std::shared_ptr<Path>)> fn) const {
-    tree.query(bgi::intersects(p), boost::make_function_output_iterator([&fn](path_ref const& ref){
-        fn(ref.second);
-    }));
+void PathRTree::handleIntersecting(const Node &n, const path_handler &handler) const {
+    point p = makePoint(n);
+    for (auto it = tree.qbegin(bgi::intersects(p)); it != tree.qend(); ++it) {
+        if (!handler(it->second)) break;
+    }
 }
 
 bool PathRTree::contains(std::shared_ptr<Path> path) const {

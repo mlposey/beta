@@ -53,7 +53,12 @@ public:
     size_t sizeBytes(std::shared_ptr<Path> path) const override;
 
 private:
-    void handleIntersectingPaths(point p, std::function<void(std::shared_ptr<Path>)> fn) const;
+    /** Collects the reference segments that belong to the path */
+    std::vector<path_ref> collectReferences(std::shared_ptr<Path> path);
+
+    using path_handler = std::function<bool(const std::shared_ptr<Path> &path)>;
+    /** Handles paths that n intersects, stopping early if handler returns false */
+    void handleIntersecting(const Node &n, const path_handler &handler) const;
 
     bgi::rtree<path_ref, bgi::quadratic<16>> tree;
 };
