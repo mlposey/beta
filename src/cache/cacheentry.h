@@ -11,9 +11,10 @@ public:
 
     /** Returns a query containing the entry origin and destination */
     path_query query() const {
-        return {*path_->begin(), *(path_->end() - 1)};
+        return {*path_->begin(), *std::prev(path_->end())};
     }
 
+    /** Returns the path held by the entry */
     std::shared_ptr<Path> path() const {
         return path_;
     }

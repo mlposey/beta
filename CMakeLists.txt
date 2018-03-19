@@ -103,6 +103,7 @@ set(TEST_FILES
         tests/config/config.cpp
         tests/path/path2d.cpp
         tests/path/shareablepath.cpp
+        tests/cache/cacheentry.cpp
         tests/cache/pathcache.cpp
         tests/cache/index/pathrtree.cpp
         tests/provider/providerloader.cpp)
