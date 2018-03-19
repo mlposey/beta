@@ -26,6 +26,7 @@ public:
      */
     std::shared_ptr<Path> findPath(path_query query);
 
+    /** Returns the underlying provider */
     std::shared_ptr<PathProvider> provider() const { return provider_; }
 
 private:
