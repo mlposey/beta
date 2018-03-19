@@ -106,6 +106,7 @@ set(TEST_FILES
         tests/cache/cacheentry.cpp
         tests/cache/pathcache.cpp
         tests/cache/index/pathrtree.cpp
+        tests/provider/provideradapter.cpp
         tests/provider/providerloader.cpp)
 
 add_executable(tests ${TEST_FILES})

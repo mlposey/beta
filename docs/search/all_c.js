@@ -13,7 +13,7 @@ var searchData=
   ['pathindex',['PathIndex',['../structbeta_1_1PathIndex.html',1,'beta']]],
   ['pathprovider',['PathProvider',['../structPathProvider.html',1,'']]],
   ['pathrtree',['PathRTree',['../classbeta_1_1PathRTree.html',1,'beta']]],
-  ['provider',['provider',['../classbeta_1_1BoostFlagParser.html#a6e1ebe7d39dde4acb94b4d4d7aec3471',1,'beta::BoostFlagParser']]],
+  ['provider',['provider',['../classbeta_1_1BoostFlagParser.html#a6e1ebe7d39dde4acb94b4d4d7aec3471',1,'beta::BoostFlagParser::provider()'],['../classbeta_1_1ProviderAdapter.html#a86bdaeb5c277bc7534933f0074358513',1,'beta::ProviderAdapter::provider()']]],
   ['provideradapter',['ProviderAdapter',['../classbeta_1_1ProviderAdapter.html',1,'beta']]],
   ['providerloader',['ProviderLoader',['../classbeta_1_1ProviderLoader.html#a52c018410b274a08d7700f71138f2803',1,'beta::ProviderLoader']]],
   ['providerloader',['ProviderLoader',['../classbeta_1_1ProviderLoader.html',1,'beta']]],
