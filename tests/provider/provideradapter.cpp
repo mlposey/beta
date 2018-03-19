@@ -2,7 +2,7 @@
 #include "provider/provideradapter.h"
 #include "path/path2d.h"
 
-class MockProvider : public PathProvider {
+class PAMockProvider : public PathProvider {
 public:
     std::string name() const { return "MockProvider"; }
     float version() const { return 0.1; }
@@ -19,7 +19,7 @@ class ProviderAdapterTest : public testing::Test {
 };
 
 TEST_F(ProviderAdapterTest, findPath) {
-    auto mockProvider = std::make_shared<MockProvider>();
+    auto mockProvider = std::make_shared<PAMockProvider>();
     ProviderAdapter adapter(mockProvider);
 
     Node origin(3.0, 4.0), dest(6.0, 9.0);
@@ -36,7 +36,7 @@ TEST_F(ProviderAdapterTest, findPath) {
 }
 
 TEST_F(ProviderAdapterTest, provider) {
-    auto mockProvider = std::make_shared<MockProvider>();
+    auto mockProvider = std::make_shared<PAMockProvider>();
     ProviderAdapter adapter(mockProvider);
     ASSERT_EQ(mockProvider, adapter.provider());
 }
