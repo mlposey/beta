@@ -15,8 +15,12 @@ BoostFlagParser::BoostFlagParser()
 }
 
 void BoostFlagParser::parse(int argc, char **argv) {
-    po::store(po::parse_command_line(argc, argv, flagsDefinition), userInput);
-    po::notify(userInput);
+    try {
+        po::store(po::parse_command_line(argc, argv, flagsDefinition), userInput);
+        po::notify(userInput);
+    } catch (std::exception &e) {
+        std::cout << e.what() << '\n';
+    }
 }
 
 bool BoostFlagParser::wantsHelp() const {

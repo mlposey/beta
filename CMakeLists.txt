@@ -99,6 +99,7 @@ endif()
 
 set(TEST_FILES
         tests/main.cpp
+        tests/flag/boostflagparser.cpp
         tests/config/config.cpp
         tests/path/path2d.cpp
         tests/path/shareablepath.cpp
