@@ -6,8 +6,8 @@ for networking and lets developers write plugins that fetch external paths
 in the event of a cache miss.
 
 # Documentation
-[Doxygen](http://www.stack.nl/~dimitri/doxygen/) is used to document the
-source code. That documentation is hosted [here](https://mlposey.github.io/beta/annotated.html).
+The [Doxygen](http://www.stack.nl/~dimitri/doxygen/) documentation is
+hosted [here](https://mlposey.github.io/beta/annotated.html).
 
 Additionally, the [beta-example](https://github.com/mlposey/beta-example)
 repository contains reference implementations for a client and provider
