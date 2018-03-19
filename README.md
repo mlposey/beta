@@ -5,12 +5,6 @@ BeTA is a caching system that manages geospatial paths. It uses [gRPC](https://g
 for networking and lets developers write plugins that fetch external paths
 in the event of a cache miss.
 
-# Status
-This project is in a very early stage. As such, it is not recommended
-for production use due to both the scope of testing and stability of
-the gRPC and Provider APIs. The name may even change; *SearchyFindyThing*
-sounds better every day.
-
 # Documentation
 [Doxygen](http://www.stack.nl/~dimitri/doxygen/) is used to document the
 source code. That documentation is hosted [here](https://mlposey.github.io/beta/annotated.html).
