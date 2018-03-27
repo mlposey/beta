@@ -30,7 +30,6 @@ std::vector<path_ref> PathRTree::collectReferences(std::shared_ptr<Path> path) {
         for (auto treeIt = tree.qbegin(bgi::intersects(p)); treeIt != tree.qend(); ++treeIt) {
             if (treeIt->second.get() == path.get()) {
                 refs.push_back(*treeIt);
-                break;
             }
         }
     }
