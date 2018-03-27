@@ -26,7 +26,7 @@ pipeline {
             when { branch 'master' }
             steps {
                 sh 'rm *.tar.gz || true'
-                sh '/bin/bash ./ops/archive-release.sh ${BUILD_NUMBER}'
+                sh '/bin/bash ops/archive-release.sh src/version.h'
             }
             post {
                 always {
