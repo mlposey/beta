@@ -1,9 +1,10 @@
 # BeTA
 [![Build Status](http://jenkins.marcusposey.com:8081/buildStatus/icon?job=mlposey/beta/master)](http://jenkins.marcusposey.com:8081/job/mlposey/job/beta/job/master/)
 
-BeTA is a caching system that manages geospatial paths. It uses [gRPC](https://grpc.io/about/)
-for networking and lets developers write plugins that fetch external paths
-in the event of a cache miss.
+BeTA is a caching system that manages geospatial paths. In contrast to simple
+caching techniques, it can satisfy queries using subpaths in the existing
+dataset. Developers can interact with BeTA using [gRPC](https://grpc.io/about/)
+and augment its abilities by writing provider plugins.
 
 ## Documentation
 The [Doxygen](http://www.stack.nl/~dimitri/doxygen/) documentation is
